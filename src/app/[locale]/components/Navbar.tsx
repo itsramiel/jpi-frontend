@@ -11,20 +11,20 @@ export const Navbar = () => {
   const t = useTranslations("labels");
 
   return (
-    <div className="flex px-4 justify-between items-center relative">
+    <div className="flex px-4 justify-between items-center relative max-w-6xl mx-auto">
       <Image
         src={require("../../../../public/jpi-logo-optimized.png")}
         alt="logo"
         width={40}
         height={40}
       />
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+      <button className="sm:hidden" onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? <IoCloseSharp size={24} /> : <IoMenuSharp size={24} />}
       </button>
       <div
-        className={` p-3 flex flex-col font-semibold gap-4 text-gray-700 absolute right-0 left-0 top-full border-t border-t-gray-300 ${
-          isOpen ? "" : "hidden"
-        }`}
+        className={` p-3 sm:p-0 flex-col sm:flex-row font-semibold gap-4 text-gray-700 absolute right-0 left-0 top-full sm:static border-t sm:border-0 border-t-gray-300 ${
+          isOpen ? "flex" : "hidden"
+        } sm:flex`}
       >
         <p>{t("projects")}</p>
         <p>{t("blog")}</p>
