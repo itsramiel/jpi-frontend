@@ -1,6 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { LocaleSegmentProps } from "./type";
+import { Navbar } from "./components";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -15,7 +16,10 @@ export default function RootLayout({
 } & LocaleSegmentProps) {
   return (
     <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
