@@ -1,11 +1,14 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState } from "react";
 import { IoCloseSharp, IoMenuSharp } from "react-icons/io5";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const t = useTranslations("labels");
 
   return (
     <div className="flex px-4 justify-between items-center relative">
@@ -23,9 +26,9 @@ export const Navbar = () => {
           isOpen ? "" : "hidden"
         }`}
       >
-        <p>Projects</p>
-        <p>Blog</p>
-        <p>Contact Us</p>
+        <p>{t("projects")}</p>
+        <p>{t("blog")}</p>
+        <p>{t("contactUs")}</p>
       </div>
     </div>
   );
