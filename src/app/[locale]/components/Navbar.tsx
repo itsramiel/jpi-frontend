@@ -22,7 +22,7 @@ export const Navbar = () => {
         {isOpen ? <IoCloseSharp size={24} /> : <IoMenuSharp size={24} />}
       </button>
       <div
-        className={`absolute right-0 left-0 top-full border-t border-t-gray-300 ${
+        className={` p-3 flex flex-col font-semibold gap-4 text-gray-700 absolute right-0 left-0 top-full border-t border-t-gray-300 ${
           isOpen ? "" : "hidden"
         }`}
       >
