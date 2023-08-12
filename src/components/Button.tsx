@@ -12,7 +12,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`px-6 py-4 bg-gray-950 font-semibold text-gray-100 rounded ${className}`}
+      className={`px-6 py-4 bg-gray-950 hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}
       {...props}
     >
       {children}
