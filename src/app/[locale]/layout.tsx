@@ -32,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
-      <body>
+      <body className="max-w-6xl mx-auto px-4">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
           {children}
