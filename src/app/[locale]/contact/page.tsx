@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Input, TextAreaInput } from "@/components";
+import { Controller, useForm } from "react-hook-form";
 import { IoCallSharp, IoMailSharp } from "react-icons/io5";
 
 export default function Contact() {
@@ -14,21 +15,7 @@ export default function Contact() {
             investment journey
           </h2>
         </div>
-        <form className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <Input title="Email *" />
-            <Input title="Phone Number" />
-            <TextAreaInput title="Message" />
-          </div>
-          <Button
-            onClick={() => {
-              // do somethn
-            }}
-            className="self-start"
-          >
-            Send Message
-          </Button>
-        </form>
+        <Form />
       </main>
       <aside className="flex flex-1 flex-col gap-4">
         <div className="flex flex-col gap-1">
@@ -36,7 +23,7 @@ export default function Contact() {
             Or reach us directly
           </h1>
           <h2 className="text-gray-600 font-medium">
-            Feel free to contac us yourself by:
+            Feel free to contact us yourself by:
           </h2>
         </div>
         <ul className="flex flex-col gap-1">
@@ -52,5 +39,80 @@ export default function Contact() {
         </ul>
       </aside>
     </div>
+  );
+}
+
+function Form() {
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      phoneNumber: "",
+      message: "",
+    },
+  });
+
+  return (
+    <form
+      className="flex flex-col gap-8"
+      onSubmit={handleSubmit((data) => {
+        console.log(data);
+      })}
+    >
+      <div className="flex flex-col gap-2">
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: "This field is required",
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+              message: "Please enter a valid email",
+            },
+          }}
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              {...field}
+              fieldLabel={"Email"}
+              required
+              error={error?.message}
+            />
+          )}
+        />
+        <Controller
+          name="phoneNumber"
+          control={control}
+          rules={{
+            pattern: {
+              value:
+                /^(\+?\d{1,3}[-.\s]?)?(\(?\d{1,5}?\)?[-.\s]?)?\d{1,5}[-.\s]?\d{1,9}$/g,
+              message: "Please enter a valid phone number",
+            },
+          }}
+          render={({ field, fieldState: { error } }) => (
+            <Input
+              {...field}
+              fieldLabel="Phone Number"
+              error={error?.message}
+            />
+          )}
+        />
+        <Controller
+          name="message"
+          control={control}
+          rules={{
+            required: "This field is required",
+          }}
+          render={({ field, fieldState: { error } }) => (
+            <TextAreaInput
+              {...field}
+              fieldLabel={"Message"}
+              required
+              error={error?.message}
+            />
+          )}
+        />
+      </div>
+      <Button className="self-start">Send Message</Button>
+    </form>
   );
 }

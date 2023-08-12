@@ -1,15 +1,23 @@
-interface TextAreaInputProps extends React.HTMLProps<HTMLTextAreaElement> {
-  title: string;
-}
+import React from "react";
+import { BaseInput, BaseInputProps } from "./BaseInput";
 
-export const TextAreaInput = ({ title, ...props }: TextAreaInputProps) => {
+interface TextAreaInputProps
+  extends React.HTMLProps<HTMLTextAreaElement>,
+    Omit<BaseInputProps, "children"> {}
+
+export const TextAreaInput = React.forwardRef<
+  HTMLTextAreaElement,
+  TextAreaInputProps
+>(({ fieldLabel, error, required, ...props }, forwardedRef) => {
   return (
-    <div className="flex flex-col gap-3">
-      <p className="text-gray-800 font-semibold">{title}</p>
+    <BaseInput fieldLabel={fieldLabel} error={error} required={required}>
       <textarea
+        ref={forwardedRef}
         {...props}
         className="py-3 px-2 rounded-lg border border-gray-400 h-36 resize-none"
       />
-    </div>
+    </BaseInput>
   );
-};
+});
+
+TextAreaInput.displayName = " TextAreaInput";
