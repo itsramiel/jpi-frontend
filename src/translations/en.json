@@ -3,5 +3,28 @@
     "projects": "Projects",
     "blog": "Blog",
     "contactUs": "Contact Us"
+  },
+  "conatct": {
+    "form": {
+      "title": "Get in touch",
+      "description": "We’d love to answer any questions or inquiries to help you in your investment journey",
+      "inputs": {
+        "labels": {
+          "email": "Email",
+          "phoneNumber": "Phone Number",
+          "message": "Message"
+        },
+        "errors": {
+          "required": "This field is required",
+          "invalidEmail": "Please enter a valid email",
+          "invalidPhoneNumber": "Please enter a valid phone Number"
+        }
+      },
+      "submitBtn": "Send Message"
+    },
+    "ourContacts": {
+      "title": "Or reach us directly",
+      "description": "Feel free to contact us yourself by:"
+    }
   }
 }
