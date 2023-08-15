@@ -18,16 +18,19 @@ export default function BlogPage() {
 
 function Blogs() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-3 gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 px-3 gap-10">
       {BLOG_DATA.map((blog) => (
-        <div key={blog.id} className="flex flex-col gap-2">
-          <div className="h-44">
+        <div
+          key={blog.id}
+          className="group flex flex-col gap-2 border-2 border-white p-3 rounded transition duration-300 hover:border-yellow-500 hover:-translate-y-2"
+        >
+          <div className="h-44 overflow-hidden">
             <Image
               src={blog.image}
               alt="blog thumbnail"
               width={200}
               height={176}
-              className="w-full h-full object-cover rounded"
+              className="w-full h-full object-cover rounded transition-transform duration-300 group-hover:scale-105"
             />
           </div>
           <p className="text-gray-950 text-xl font-semibold">{blog.title}</p>
