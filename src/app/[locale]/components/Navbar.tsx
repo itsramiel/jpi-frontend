@@ -36,7 +36,9 @@ export const Navbar = () => {
         } sm:flex`}
       >
         <a>{t("projects")}</a>
-        <a>{t("blog")}</a>
+        <a onClick={() => onLinkClick("/blog")} className="cursor-pointer">
+          {t("blog")}
+        </a>
         <a onClick={() => onLinkClick("/contact")} className="cursor-pointer">
           {t("contactUs")}
         </a>
