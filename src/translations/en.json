@@ -4,6 +4,13 @@
     "blog": "Blog",
     "contactUs": "Contact Us"
   },
+  "blogs": {
+    "title": "Blog",
+    "description": "Browse from our list of blogs which spans different wide variety of topic in the field of property investment",
+    "labels": {
+      "by": "by"
+    }
+  },
   "conatct": {
     "form": {
       "title": "Get in touch",
