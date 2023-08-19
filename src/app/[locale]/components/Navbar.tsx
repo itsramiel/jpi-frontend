@@ -35,7 +35,9 @@ export const Navbar = () => {
           isOpen ? "flex" : "hidden"
         } sm:flex`}
       >
-        <a>{t("projects")}</a>
+        <a onClick={() => onLinkClick("/projects")} className="cursor-pointer">
+          {t("projects")}
+        </a>
         <a onClick={() => onLinkClick("/blog")} className="cursor-pointer">
           {t("blog")}
         </a>

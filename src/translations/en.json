@@ -11,6 +11,10 @@
       "by": "by"
     }
   },
+  "projects": {
+    "title": "Projects",
+    "description": "Browse our carefully curated list of properties that match your luxurious lifestyle"
+  },
   "conatct": {
     "form": {
       "title": "Get in touch",
