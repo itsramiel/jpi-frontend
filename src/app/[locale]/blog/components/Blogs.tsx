@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { TBlogsResponse } from "../types";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+
+import { formatDate } from "@/utils";
+
+import { TBlogsResponse } from "../types";
 
 interface BlogsProps {
   blogs: TBlogsResponse;
@@ -10,12 +14,15 @@ interface BlogsProps {
 
 export function Blogs({ blogs }: BlogsProps) {
   const t = useTranslations("blogs.labels");
+  const router = useRouter();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 px-3 gap-10">
       {blogs.map((blog) => (
         <div
           key={blog.id}
-          className="group flex flex-col gap-2 border-2 border-white p-3 rounded transition duration-300 hover:border-yellow-500 hover:-translate-y-2"
+          className="group flex flex-col gap-2 border-2 border-white p-3 rounded transition duration-300 hover:border-yellow-500 hover:-translate-y-2 cursor-pointer"
+          onClick={() => router.push(`/blog/${blog.id}`)}
         >
           <div className="h-44 overflow-hidden">
             <Image
@@ -37,11 +44,10 @@ export function Blogs({ blogs }: BlogsProps) {
               </span>
             </p>
             <p>
-              {Intl.DateTimeFormat(blog.attributes.locale, {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              }).format(new Date(blog.attributes.publishedAt))}
+              {formatDate(
+                new Date(blog.attributes.publishedAt),
+                blog.attributes.locale
+              )}
             </p>
           </div>
         </div>
