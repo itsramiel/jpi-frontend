@@ -1,8 +1,9 @@
 "use client";
-import Image from "next/image";
+import { useTranslations } from "next-intl";
+
 import { DUMMY_PROJECTS_AR, DUMMY_PROJECTS_EN } from "./dummydata";
 import { BasePageProps } from "@/types";
-import { useTranslations } from "next-intl";
+import { ImageCarousel } from "./components";
 
 export default function Page({ params: { locale } }: BasePageProps) {
   const t = useTranslations("projects");
@@ -16,15 +17,7 @@ export default function Page({ params: { locale } }: BasePageProps) {
         {(locale === "en" ? DUMMY_PROJECTS_EN : DUMMY_PROJECTS_AR).map(
           (project) => (
             <div className="flex flex-col gap-1" key={project.id}>
-              <div className="aspect-{3/2}">
-                <Image
-                  src={project.images[0]}
-                  alt="project image"
-                  width={358}
-                  height={240}
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
+              <ImageCarousel images={project.images} />
               <div className="flex flex-row flex-wrap gap-1">
                 {project.availablePropertyTypes.map((propertyType) => (
                   <div

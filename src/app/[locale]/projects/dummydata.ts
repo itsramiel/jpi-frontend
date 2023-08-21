@@ -26,6 +26,12 @@ export const DUMMY_PROJECTS_EN = [
       "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-3.webp",
       "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-4.webp",
       "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-5.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-3.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-4.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-5.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-3.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-4.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-05-26-natulux-1065x650-5.webp",
     ],
   },
   {
