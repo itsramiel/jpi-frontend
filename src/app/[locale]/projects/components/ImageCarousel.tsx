@@ -64,7 +64,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
     DOT_SIZE;
 
   return (
-    <div className="aspect-[3/2] relative">
+    <div className="group aspect-[3/2] relative">
       <div ref={emblaRef} className="overflow-hidden h-full">
         <div className="flex h-full">
           {images.map((image, index) => (
@@ -139,8 +139,8 @@ function CarouselButton({ position, onPress, disabled }: CarouselButtonProps) {
       disabled={disabled}
       className={`absolute w-8 h-8 rounded-full bg-white top-2/4 translate-y-4 ${
         position === "left" ? "start-2" : "end-2"
-      } flex items-center justify-center ${
-        disabled ? "opacity-70" : ""
+      } flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity opacity-0 ${
+        disabled ? "group-hover:opacity-70" : "group-hover:opacity-100"
       } mirror`}
       onClick={onPress}
     >
