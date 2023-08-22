@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
 import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
+import { useLocale } from "next-intl";
 
 interface ImageCarouselProps {
   images: string[];
@@ -21,11 +22,14 @@ interface ImageCarouselProps {
   images: string[];
 }
 export const ImageCarousel = ({ images }: ImageCarouselProps) => {
+  const locale = useLocale();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    direction: locale === "en" ? "ltr" : "rtl",
+  });
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -86,12 +90,12 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
         disabled={nextBtnDisabled}
       />
       <div
-        className={`absolute pointer-events-none flex flex-row gap-[${DOT_SIZE}px] bottom-5 left-2/4 transition-transform`}
+        className={`absolute pointer-events-none flex flex-row gap-2 bottom-5 left-2/4 transition-transform`}
         style={{ transform: `translatex(${translation}px)` }}
       >
         {images.map((_, index) => (
           <div
-            className={`w-[${DOT_SIZE}px] h-[${DOT_SIZE}px] rounded-full bg-white ${
+            className={`w-2 h-2 rounded-full bg-white ${
               OPACITY_MAP[
                 dotVisibilityStatus(
                   index,
@@ -132,9 +136,11 @@ function CarouselButton({ position, onPress, disabled }: CarouselButtonProps) {
   return (
     <button
       disabled={disabled}
-      className={`absolute w-8 h-8 rounded-full bg-white top-2/4 translate-y-4 ${position}-2 flex items-center justify-center ${
+      className={`absolute w-8 h-8 rounded-full bg-white top-2/4 translate-y-4 ${
+        position === "left" ? "start-2" : "end-2"
+      } flex items-center justify-center ${
         disabled ? "opacity-70" : ""
-      }`}
+      } mirror`}
       onClick={onPress}
     >
       {position === "left" ? (

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[dir="ltr"] {
+  --text-x-direction: 1;
+}
+
+[dir="rtl"] {
+  --text-x-direction: -1;
+}
+
+@layer utilities {
+  .mirror {
+    transform: scaleX(var(--text-x-direction));
+  }
+}
