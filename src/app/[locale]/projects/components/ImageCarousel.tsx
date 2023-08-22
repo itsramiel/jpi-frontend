@@ -57,6 +57,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
   const visibleDots = Math.min(images.length, MAX_VISIBLE_DOTS);
 
   const translation =
+    (locale === "en" ? 1 : -1) *
     (-visibleDots +
       0.5 -
       getTranslationUnits(images.length, visibleDots, currentIndex) * 2) *
@@ -90,7 +91,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
         disabled={nextBtnDisabled}
       />
       <div
-        className={`absolute pointer-events-none flex flex-row gap-2 bottom-5 left-2/4 transition-transform`}
+        className={`absolute pointer-events-none flex flex-row gap-2 bottom-5 start-2/4 transition-transform`}
         style={{ transform: `translatex(${translation}px)` }}
       >
         {images.map((_, index) => (

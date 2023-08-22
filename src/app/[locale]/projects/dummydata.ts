@@ -238,6 +238,12 @@ export const DUMMY_PROJECTS_AR = [
       "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-4.webp",
       "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-5.webp",
       "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-1.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-4.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-5.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-1.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-4.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-5.webp",
+      "https://dovecconstruction.com/uploads/estate/images/2023-04-13-courtyard-platinum-slider1065x650-1.webp",
     ],
   },
   {
