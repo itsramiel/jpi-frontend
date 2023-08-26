@@ -13,7 +13,10 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "Browse our carefully curated list of properties that match your luxurious lifestyle"
+    "description": "Browse our carefully curated list of properties that match your luxurious lifestyle",
+    "labels": {
+      "distancePhrase": "{distance} away from {place}"
+    }
   },
   "conatct": {
     "form": {
