@@ -2,11 +2,13 @@
 import { useTranslations } from "next-intl";
 import { ImageCarousel } from "./ImageCarousel";
 import { TProject } from "../types";
+import { useRouter } from "next-intl/client";
 
 interface ProjectsProps {
   projects: TProject[];
 }
 export const Projects = ({ projects }: ProjectsProps) => {
+  const router = useRouter();
   const t = useTranslations("projects.labels");
   return projects.map(({ id, attributes }) => {
     const propertyTypes = Array.from(
@@ -27,7 +29,11 @@ export const Projects = ({ projects }: ProjectsProps) => {
       place: firstNearbyPOI.name,
     });
     return (
-      <div className="flex flex-col gap-1" key={id}>
+      <div
+        className="flex flex-col gap-1 p-3 rounded transition duration-300 border-2 border-white hover:border-yellow-500 hover:-translate-y-2 cursor-pointer"
+        key={id}
+        onClick={() => router.push(`/projects/${id}`)}
+      >
         <ImageCarousel images={attributes.images} />
         <div className="flex flex-row flex-wrap gap-1">
           {propertyTypes.map((propertyType) => (
