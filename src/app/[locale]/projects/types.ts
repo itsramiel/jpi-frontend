@@ -39,7 +39,7 @@ export type TProject = {
     pricing: {
       id: number;
       startingPrice: number;
-      DownPayment: number;
+      downPayment: number;
       fullPaymentDiscount: boolean;
       currency: string;
     };

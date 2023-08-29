@@ -16,7 +16,15 @@
     "description": "Browse our carefully curated list of properties that match your luxurious lifestyle",
     "labels": {
       "distancePhrase": "{distance} away from {place}"
-    }
+    },
+    "onSiteAmenities": "On-Site Amenities",
+    "nearbyPOI": "Nearby Points of Interests",
+    "propertyTypes": "Choose Your Property Type",
+    "pricing": "Pricing & Payment Options",
+    "locationOnMap": "Location on Map",
+    "startingPrice": "Prices Begin at {price}",
+    "downPayment": "Down payment {percentage}% + monthly installments",
+    "fullPaymentDiscount": "Exclusive Discount for Full Payment"
   },
   "conatct": {
     "form": {

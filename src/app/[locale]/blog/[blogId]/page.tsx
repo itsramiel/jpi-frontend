@@ -14,10 +14,7 @@ export default async function Page({
   params: { blogId, locale },
 }: PageProps & BasePageProps) {
   const response = await fetch(
-    `http://127.0.0.1:1337/api/blogs/${blogId}?populate[0]=author&locale=${locale}`,
-    {
-      cache: "no-store",
-    }
+    `http://127.0.0.1:1337/api/blogs/${blogId}?populate[0]=author&locale=${locale}`
   );
 
   const { data } = (await response.json()) as TBlogResponse;
