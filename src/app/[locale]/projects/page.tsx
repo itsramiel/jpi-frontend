@@ -8,7 +8,7 @@ type TResponse = {
 
 export default async function Page({ params: { locale } }: BasePageProps) {
   const response = await fetch(
-    `http://127.0.0.1:1337/api/projects?locale=${locale}&populate[0]=coordinates&populate[1]=amenities&populate[2]=propertyTypes&populate[3]=nearbyPOI&populate[4]=pricing`
+    `${process.env.SERVER_URL}/api/projects?locale=${locale}&populate[0]=coordinates&populate[1]=amenities&populate[2]=propertyTypes&populate[3]=nearbyPOI&populate[4]=pricing`
   );
 
   const { data } = (await response.json()) as TResponse;
