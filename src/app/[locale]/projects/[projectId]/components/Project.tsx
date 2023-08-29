@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { TProject } from "../../types";
 import { IoLocationOutline, IoMapOutline, IoPinOutline } from "react-icons/io5";
 import { TbMoneybag } from "react-icons/tb";
@@ -8,6 +7,7 @@ import { SectionItems } from "./SectionItems";
 import { PropertyTypesView } from "./PropertyTypesView";
 import { formatCurrency } from "@/utils";
 import { Contact } from "./Contact";
+import { ImageCarousel } from "./ImageCarousel";
 
 interface ProjectProps {
   project: TProject;
@@ -27,15 +27,7 @@ export const Project = ({ project }: ProjectProps) => {
             {project.attributes.city}
           </p>
         </div>
-        <div className="aspect-video rounded overflow-hidden">
-          <Image
-            src={project.attributes.images[0]}
-            alt="project image"
-            width={358}
-            height={200}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <ImageCarousel images={project.attributes.images} />
       </div>
       <div className="flex flex-col gap-2">
         <p className="text-gray-900 text-2xl font-semibold">{`${t(
