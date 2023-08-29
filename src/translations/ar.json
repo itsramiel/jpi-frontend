@@ -13,10 +13,19 @@
   },
   "projects": {
     "title": "المشاريع",
-    "description": "تصفح قائمتنا المختارة بعناية من العقارات التي تتناسب مع نمط حياتك الفاخر",
+    "description": "تصفح قائمتنا المنتقاة بعناية من العقارات التي تتناسب مع أسلوب حياتك الفخم",
     "labels": {
+      "aboutProject": "عن {projectName}:",
       "distancePhrase": "{distance} بعيد عن {place}"
-    }
+    },
+    "onSiteAmenities": "وسائل الراحة في الموقع",
+    "nearbyPOI": "نقاط الاهتمام القريبة",
+    "propertyTypes": "اختر نوع العقار الخاص بك",
+    "pricing": "التسعير وخيارات الدفع",
+    "locationOnMap": "الموقع على الخريطة",
+    "startingPrice": "تبدأ الأسعار من {price}",
+    "downPayment": "دفعة أولى {percentage}% + أقساط شهرية",
+    "fullPaymentDiscount": "خصم حصري للدفع الكامل"
   },
   "conatct": {
     "form": {

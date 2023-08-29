@@ -38,7 +38,10 @@ export const Project = ({ project }: ProjectProps) => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-gray-900 text-2xl font-semibold">{`About ${project.attributes.name}:`}</p>
+        <p className="text-gray-900 text-2xl font-semibold">{`${t(
+          "labels.aboutProject",
+          { projectName: project.attributes.name }
+        )}`}</p>
         <p className="text-gray-700 text-base font-medium">
           {project.attributes.description}
         </p>

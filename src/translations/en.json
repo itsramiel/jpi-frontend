@@ -15,6 +15,7 @@
     "title": "Projects",
     "description": "Browse our carefully curated list of properties that match your luxurious lifestyle",
     "labels": {
+      "aboutProject": "About {projectName}:",
       "distancePhrase": "{distance} away from {place}"
     },
     "onSiteAmenities": "On-Site Amenities",
