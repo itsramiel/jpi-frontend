@@ -8,6 +8,7 @@ import { PropertyTypesView } from "./PropertyTypesView";
 import { formatCurrency } from "@/utils";
 import { Contact } from "./Contact";
 import { ImageCarousel } from "./ImageCarousel";
+import { Map } from "./Map";
 
 interface ProjectProps {
   project: TProject;
@@ -90,7 +91,10 @@ export const Project = ({ project }: ProjectProps) => {
             <p className="text-gray-700 text-base font-semibold">
               {project.attributes.city}
             </p>
-            <div className="aspect-video rounded border-2 border-gray-500 bg-red-400"></div>
+            <Map
+              latitude={project.attributes.coordinates.latitude}
+              longitude={project.attributes.coordinates.longitude}
+            />
           </div>
         </div>
         <Contact />
