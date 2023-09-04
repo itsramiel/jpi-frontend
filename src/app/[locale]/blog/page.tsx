@@ -4,7 +4,7 @@ import { Blogs, Header } from "./components";
 
 export default async function BlogPage({ params: { locale } }: BasePageProps) {
   const response = await fetch(
-    `${process.env.SERVER_URL}/api/blogs?locale=${locale}&populate=author`
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs?locale=${locale}&populate[0]=author&populate[1]=imageThumbnail`
   );
 
   const data = (await response.json()) as { data: TBlogsResponse };

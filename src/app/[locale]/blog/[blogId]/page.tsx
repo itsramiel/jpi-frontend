@@ -14,7 +14,7 @@ export default async function Page({
   params: { blogId, locale },
 }: PageProps & BasePageProps) {
   const response = await fetch(
-    `${process.env.SERVER_URL}/api/blogs/${blogId}?populate[0]=author&locale=${locale}`
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?populate[0]=author&populate[1]=imageThumbnail&locale=${locale}`
   );
 
   const { data } = (await response.json()) as TBlogResponse;
@@ -33,7 +33,7 @@ export default async function Page({
       </div>
       <div className="h-44 min-[440px]:h-52 min-[540px]:h-60">
         <Image
-          src={blog.imageThumbnail}
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}${blog.imageThumbnail.data.attributes.url}`}
           alt="blog image"
           width={300}
           height={176}

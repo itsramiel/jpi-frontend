@@ -28,7 +28,12 @@ export const Project = ({ project }: ProjectProps) => {
             {project.attributes.city}
           </p>
         </div>
-        <ImageCarousel images={project.attributes.images} />
+        <ImageCarousel
+          images={project.attributes.images.data.map(
+            (item) =>
+              `${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.url}`
+          )}
+        />
       </div>
       <div className="flex flex-col gap-2">
         <p className="text-gray-900 text-2xl font-semibold">{`${t(

@@ -8,7 +8,14 @@ export type TProject = {
     updatedAt: string;
     publishedAt: string;
     locale: string;
-    images: Array<string>;
+    images: {
+      data: Array<{
+        id: number;
+        attributes: {
+          url: string;
+        };
+      }>;
+    };
     coordinates: { id: number; latitude: number; longitude: number };
     amenities: {
       data: Array<{

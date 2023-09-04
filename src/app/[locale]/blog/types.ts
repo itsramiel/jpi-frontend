@@ -10,7 +10,14 @@ export type TBlog = {
   title: string;
   content: string;
   publishedAt: string;
-  imageThumbnail: string;
+  imageThumbnail: {
+    data: {
+      id: number;
+      attributes: {
+        url: string;
+      };
+    };
+  };
 };
 
 export type TAuthor = {

@@ -34,7 +34,12 @@ export const Projects = ({ projects }: ProjectsProps) => {
         key={id}
         onClick={() => router.push(`/projects/${id}`)}
       >
-        <ImageCarousel images={attributes.images} />
+        <ImageCarousel
+          images={attributes.images.data.map(
+            (item) =>
+              `${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.url}`
+          )}
+        />
         <div className="flex flex-row flex-wrap gap-1">
           {propertyTypes.map((propertyType) => (
             <div key={propertyType} className="py-1 px-2 bg-zinc-600 rounded">

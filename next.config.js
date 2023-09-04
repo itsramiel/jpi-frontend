@@ -7,15 +7,9 @@ const nextConfig = withNextIntl({
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com", // TODO: change to cms
-        port: "",
-        pathname: "**",
-      },
-      {
-        protocol: "https",
-        hostname: "dovecconstruction.com", // TODO: change to cms
-        port: "",
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "1337",
         pathname: "**",
       },
     ],
