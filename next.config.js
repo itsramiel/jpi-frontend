@@ -12,6 +12,12 @@ const nextConfig = withNextIntl({
         port: "1337",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "itsramiel.com",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
 });
