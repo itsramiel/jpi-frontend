@@ -1,10 +1,13 @@
+import { Ring } from "@uiball/loaders";
 import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  loading: boolean;
   children: string;
 }
 
 export const Button = ({
+  loading,
   children,
   onClick,
   className,
@@ -12,10 +15,12 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`px-6 py-4 bg-gray-950 hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}
+      className={`px-6 py-4 ${
+        loading ? "bg-gray-800" : "bg-gray-950"
+      } hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}
       {...props}
     >
-      {children}
+      {loading ? <Ring color="white" size={24} /> : children}
     </button>
   );
 };

@@ -60,7 +60,9 @@ export const ContactForm = () => {
           )}
         />
       </div>
-      <Button className="self-start">{t("submitBtn")}</Button>
+      <Button className="self-start" loading={false}>
+        {t("submitBtn")}
+      </Button>
     </form>
   );
 };
