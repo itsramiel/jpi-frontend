@@ -1,8 +1,7 @@
 "use client";
 
-import { Button, Input, TextAreaInput } from "@/components";
+import { ContactForm } from "@/components";
 import { useTranslations } from "next-intl";
-import { Controller, useForm } from "react-hook-form";
 import { IoCallSharp, IoMailSharp } from "react-icons/io5";
 
 export default function Contact() {
@@ -17,7 +16,7 @@ export default function Contact() {
           </h1>
           <h2 className="text-gray-600 font-medium">{t("form.description")}</h2>
         </div>
-        <Form />
+        <ContactForm />
       </main>
       <aside className="flex flex-1 flex-col gap-4">
         <div className="flex flex-col gap-1">
@@ -41,81 +40,5 @@ export default function Contact() {
         </ul>
       </aside>
     </div>
-  );
-}
-
-function Form() {
-  const t = useTranslations("conatct.form");
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: "",
-      phoneNumber: "",
-      message: "",
-    },
-  });
-
-  return (
-    <form
-      className="flex flex-col gap-8"
-      onSubmit={handleSubmit(() => {
-        // add logic to send message once we found how we'll do that
-      })}
-    >
-      <div className="flex flex-col gap-2 max-w-sm">
-        <Controller
-          name="email"
-          control={control}
-          rules={{
-            required: t("inputs.errors.required"),
-            pattern: {
-              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-              message: t("inputs.errors.invalidEmail"),
-            },
-          }}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              {...field}
-              fieldLabel={t("inputs.labels.email")}
-              required
-              error={error?.message}
-            />
-          )}
-        />
-        <Controller
-          name="phoneNumber"
-          control={control}
-          rules={{
-            pattern: {
-              value:
-                /^(\+?\d{1,3}[-.\s]?)?(\(?\d{1,5}?\)?[-.\s]?)?\d{1,5}[-.\s]?\d{1,9}$/g,
-              message: t("inputs.errors.invalidPhoneNumber"),
-            },
-          }}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              {...field}
-              fieldLabel={t("inputs.labels.phoneNumber")}
-              error={error?.message}
-            />
-          )}
-        />
-        <Controller
-          name="message"
-          control={control}
-          rules={{
-            required: t("inputs.errors.required"),
-          }}
-          render={({ field, fieldState: { error } }) => (
-            <TextAreaInput
-              {...field}
-              fieldLabel={t("inputs.labels.message")}
-              required
-              error={error?.message}
-            />
-          )}
-        />
-      </div>
-      <Button className="self-start">{t("submitBtn")}</Button>
-    </form>
   );
 }

@@ -6,15 +6,16 @@ import { SectionHeader } from "./SectionHeader";
 import { SectionItems } from "./SectionItems";
 import { PropertyTypesView } from "./PropertyTypesView";
 import { formatCurrency } from "@/utils";
-import { Contact } from "./Contact";
 import { ImageCarousel } from "./ImageCarousel";
 import { Map } from "./Map";
+import { ContactForm } from "@/components";
 
 interface ProjectProps {
   project: TProject;
 }
 export const Project = ({ project }: ProjectProps) => {
   const t = useTranslations("projects");
+  const tContact = useTranslations("conatct.form");
   const locale = useLocale();
   const { pricing } = project.attributes;
   return (
@@ -102,7 +103,12 @@ export const Project = ({ project }: ProjectProps) => {
             />
           </div>
         </div>
-        <Contact />
+        <div className="flex flex-col gap-2 lg:items-center sticky top-4">
+          <p className="text-gray-950 text-3xl font-semibold">
+            {tContact("title")}
+          </p>
+          <ContactForm />
+        </div>
       </div>
     </div>
   );

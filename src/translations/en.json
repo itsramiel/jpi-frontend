@@ -33,14 +33,12 @@
       "description": "We’d love to answer any questions or inquiries to help you in your investment journey",
       "inputs": {
         "labels": {
-          "email": "Email",
-          "phoneNumber": "Phone Number",
+          "contactInfo": "Email/Phone Number",
           "message": "Message"
         },
         "errors": {
           "required": "This field is required",
-          "invalidEmail": "Please enter a valid email",
-          "invalidPhoneNumber": "Please enter a valid phone Number"
+          "invalidContact": "Please enter either an email or a phone number to reach you"
         }
       },
       "submitBtn": "Send Message"
