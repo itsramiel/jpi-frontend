@@ -2,21 +2,22 @@ import { Ring } from "@uiball/loaders";
 import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  loading: boolean;
+  size?: "sm" | "base";
+  loading?: boolean;
   children: string;
 }
 
 export const Button = ({
-  loading,
+  size = "base",
+  loading = false,
   children,
-  onClick,
   className,
   ...props
 }: ButtonProps) => {
   return (
     <button
       disabled={loading}
-      className={`px-6 py-4 ${
+      className={`${size === "base" ? "px-6 py-4" : "px-4 py-2 text-sm"} ${
         loading ? "bg-gray-800" : "bg-gray-950"
       } hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}
       {...props}
