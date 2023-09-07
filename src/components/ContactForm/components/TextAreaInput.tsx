@@ -14,7 +14,7 @@ export const TextAreaInput = React.forwardRef<
       <textarea
         ref={forwardedRef}
         {...props}
-        className="py-3 px-2 rounded-lg border border-gray-400 h-36 resize-none"
+        className="w-full py-3 px-2 rounded-lg border border-gray-400 h-36 resize-none"
       />
     </BaseInput>
   );

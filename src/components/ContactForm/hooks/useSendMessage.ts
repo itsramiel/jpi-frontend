@@ -1,15 +1,14 @@
 import { useState } from "react";
 
 export const useSendMessage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, setState] = useState<null | "loading" | "error">(null);
 
   async function sendMessage(
     data: { message: string; contactInfo: string },
-    onSuccess: () => void,
-    onFail: () => void
+    onSuccess: () => void
   ) {
-    if (isLoading) return;
-    setIsLoading(true);
+    if (state === "loading") return;
+    setState("loading");
     try {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -23,16 +22,14 @@ export const useSendMessage = () => {
       );
       if (result.ok) {
         onSuccess();
+        setState(null);
       } else {
-        console.log("here");
-        onFail();
+        setState("error");
       }
     } catch (e) {
-      console.log("there");
-      onFail();
+      setState("error");
     }
-    setIsLoading(false);
   }
 
-  return { isLoading, sendMessage };
+  return { state, sendMessage };
 };

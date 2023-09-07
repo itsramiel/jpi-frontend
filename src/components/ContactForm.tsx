@@ -4,14 +4,19 @@ import { Controller, useForm } from "react-hook-form";
 
 import { isEmail, isPhoneNumber } from "./ContactForm/utils";
 
-import { Button, Input, TextAreaInput } from "./ContactForm/components";
+import {
+  AlertMessage,
+  Button,
+  Input,
+  TextAreaInput,
+} from "./ContactForm/components";
 import { useSendMessage } from "./ContactForm/hooks";
 import { useRef } from "react";
 import { IoCheckmarkSharp } from "react-icons/io5";
 
 export const ContactForm = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { isLoading, sendMessage } = useSendMessage();
+  const { state, sendMessage } = useSendMessage();
   const t = useTranslations("conatct.form");
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -23,22 +28,15 @@ export const ContactForm = () => {
   return (
     <>
       <form
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-8 max-w-sm"
         onSubmit={handleSubmit((args) => {
-          sendMessage(
-            args,
-            () => {
-              dialogRef.current?.showModal();
-              reset();
-            },
-
-            () => {
-              console.log("failed");
-            }
-          );
+          sendMessage(args, () => {
+            dialogRef.current?.showModal();
+            reset();
+          });
         })}
       >
-        <div className="flex flex-col gap-2 max-w-sm">
+        <div className="flex flex-col gap-2 ">
           <Controller
             name="contactInfo"
             control={control}
@@ -76,9 +74,16 @@ export const ContactForm = () => {
             )}
           />
         </div>
-        <Button className="self-start" loading={isLoading}>
-          {t("submitBtn")}
-        </Button>
+        <div className="flex flex-col gap-4">
+          {state === "error" ? (
+            <AlertMessage>
+              An error occured. Please try again later.
+            </AlertMessage>
+          ) : null}
+          <Button className="self-start" loading={state === "loading"}>
+            {t("submitBtn")}
+          </Button>
+        </div>
       </form>
       <dialog
         ref={dialogRef}

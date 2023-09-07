@@ -11,11 +11,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <BaseInput fieldLabel={fieldLabel} required={required} error={error}>
         {/* The extra div is just for the sake of password managers which add an extra element on top of input. If this container 
       has a gap, then there will be an extra space*/}
-        <div>
+        <div className="w-full">
           <input
             ref={forwardedRef}
             {...props}
-            className="py-3 px-2 rounded-lg border border-gray-400"
+            className=" w-full py-3 px-2 rounded-lg border border-gray-400"
           />
         </div>
       </BaseInput>
