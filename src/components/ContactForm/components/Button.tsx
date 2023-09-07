@@ -15,6 +15,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      disabled={loading}
       className={`px-6 py-4 ${
         loading ? "bg-gray-800" : "bg-gray-950"
       } hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}

@@ -5,10 +5,12 @@ import { Controller, useForm } from "react-hook-form";
 import { isEmail, isPhoneNumber } from "./ContactForm/utils";
 
 import { Button, Input, TextAreaInput } from "./ContactForm/components";
+import { useSendMessage } from "./ContactForm/hooks";
 
 export const ContactForm = () => {
+  const { isLoading, sendMessage } = useSendMessage();
   const t = useTranslations("conatct.form");
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       contactInfo: "",
       message: "",
@@ -18,8 +20,16 @@ export const ContactForm = () => {
   return (
     <form
       className="flex flex-col gap-8"
-      onSubmit={handleSubmit(() => {
-        // add logic to send message once we found how we'll do that
+      onSubmit={handleSubmit((args) => {
+        sendMessage(
+          args,
+          () => {
+            reset();
+          },
+          () => {
+            console.log("failed");
+          }
+        );
       })}
     >
       <div className="flex flex-col gap-2 max-w-sm">
@@ -60,7 +70,7 @@ export const ContactForm = () => {
           )}
         />
       </div>
-      <Button className="self-start" loading={false}>
+      <Button className="self-start" loading={isLoading}>
         {t("submitBtn")}
       </Button>
     </form>
