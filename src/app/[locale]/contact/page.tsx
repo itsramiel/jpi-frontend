@@ -33,7 +33,11 @@ export default function Contact() {
             { icon: IoMailSharp, text: "coolGuy@yolked.com" },
           ].map((item) => (
             <li key={item.text} className="flex items-center gap-3">
-              <item.icon color="rgba(55, 65, 81, 1)" size={18} />
+              <item.icon
+                color="rgba(55, 65, 81, 1)"
+                size={18}
+                className="mirror"
+              />
               <span className="text-gray-600">{item.text}</span>
             </li>
           ))}

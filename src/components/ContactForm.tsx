@@ -17,7 +17,7 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 export const ContactForm = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { state, sendMessage } = useSendMessage();
-  const t = useTranslations("conatct.form");
+  const t = useTranslations();
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       contactInfo: "",
@@ -41,10 +41,10 @@ export const ContactForm = () => {
             name="contactInfo"
             control={control}
             rules={{
-              required: t("inputs.errors.required"),
+              required: t("conatct.form.inputs.errors.required"),
               validate: (contactInfo) => {
                 if (!isEmail(contactInfo) && !isPhoneNumber(contactInfo)) {
-                  return t("inputs.errors.invalidContact");
+                  return t("conatct.form.inputs.errors.invalidContact");
                 }
                 return true;
               },
@@ -52,7 +52,7 @@ export const ContactForm = () => {
             render={({ field, fieldState: { error } }) => (
               <Input
                 {...field}
-                fieldLabel={t("inputs.labels.contactInfo")}
+                fieldLabel={t("conatct.form.inputs.labels.contactInfo")}
                 required
                 error={error?.message}
               />
@@ -62,12 +62,12 @@ export const ContactForm = () => {
             name="message"
             control={control}
             rules={{
-              required: t("inputs.errors.required"),
+              required: t("conatct.form.inputs.errors.required"),
             }}
             render={({ field, fieldState: { error } }) => (
               <TextAreaInput
                 {...field}
-                fieldLabel={t("inputs.labels.message")}
+                fieldLabel={t("conatct.form.inputs.labels.message")}
                 required
                 error={error?.message}
               />
@@ -76,12 +76,10 @@ export const ContactForm = () => {
         </div>
         <div className="flex flex-col gap-4">
           {state === "error" ? (
-            <AlertMessage>
-              An error occured. Please try again later.
-            </AlertMessage>
+            <AlertMessage>{t("labels.errorOccured")}</AlertMessage>
           ) : null}
           <Button className="self-start" loading={state === "loading"}>
-            {t("submitBtn")}
+            {t("conatct.form.submitBtn")}
           </Button>
         </div>
       </form>
@@ -95,16 +93,16 @@ export const ContactForm = () => {
           </div>
           <div className="flex flex-col items-center">
             <p className="text-gray-950 text-xl md:text-2xl lg:3xl font-semibold">
-              Message received
+              {t("conatct.dialog.header")}
             </p>
             <p className="text-gray-700 text-sm md:text-base lg:text-lg font-medium">
-              We will get back to you as soon as possible
+              {t("conatct.dialog.message")}
             </p>
           </div>
         </div>
         <div className="flex flex-col items-end p-2 md:p-3 lg:p-4 bg-gray-50 border-t border-t-gray-300">
           <Button size="sm" onClick={() => dialogRef.current?.close()}>
-            close
+            {t("labels.close")}
           </Button>
         </div>
       </dialog>
