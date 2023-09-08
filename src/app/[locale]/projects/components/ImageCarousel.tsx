@@ -31,12 +31,21 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
     direction: locale === "en" ? "ltr" : "rtl",
   });
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
+  const scrollPrev: CarouselButtonProps["onPress"] = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      emblaApi && emblaApi.scrollPrev();
+    },
     [emblaApi]
   );
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
+  const scrollNext: CarouselButtonProps["onPress"] = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      emblaApi && emblaApi.scrollNext();
+    },
     [emblaApi]
   );
 
@@ -129,7 +138,7 @@ function getTranslationUnits(
 
 interface CarouselButtonProps {
   position: "left" | "right";
-  onPress: () => void;
+  onPress: NonNullable<React.HTMLProps<HTMLButtonElement>["onClick"]>;
   disabled: boolean;
 }
 
