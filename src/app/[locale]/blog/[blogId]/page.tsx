@@ -14,7 +14,8 @@ export default async function Page({
   params: { blogId, locale },
 }: PageProps & BasePageProps) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?populate[0]=author&populate[1]=imageThumbnail&locale=${locale}`
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?populate[0]=author&populate[1]=imageThumbnail&locale=${locale}`,
+    { cache: "no-store" }
   );
 
   const { data } = (await response.json()) as TBlogResponse;

@@ -1,4 +1,3 @@
-export const revalidate = 0;
 import "../globals.css";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
