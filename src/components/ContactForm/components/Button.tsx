@@ -1,28 +1,48 @@
 import { Ring } from "@uiball/loaders";
+import { VariantProps, cva } from "class-variance-authority";
 import { ButtonHTMLAttributes } from "react";
+import { IconType } from "react-icons";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: "sm" | "base";
-  loading?: boolean;
+const button = cva("font-medium text-gray-50 rounded flex items-center gap-4", {
+  variants: {
+    loading: {
+      true: "bg-gray-800",
+      false: "bg-gray-950 hover:bg-gray-800",
+    },
+    size: {
+      sm: "text-sm px-4 py-2",
+      md: "text-md md:text-base px-4 md:px-6 py-4",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+    loading: false,
+  },
+});
+
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof button> {
+  trailingIcon?: IconType;
   children: string;
 }
 
 export const Button = ({
-  size = "base",
-  loading = false,
+  size,
+  loading,
   children,
   className,
+  trailingIcon: TrailingIcon,
   ...props
 }: ButtonProps) => {
   return (
     <button
-      disabled={loading}
-      className={`${size === "base" ? "px-6 py-4" : "px-4 py-2 text-sm"} ${
-        loading ? "bg-gray-800" : "bg-gray-950"
-      } hover:bg-gray-800 font-semibold text-gray-100 rounded ${className}`}
+      disabled={loading ?? undefined}
+      className={button({ size, loading })}
       {...props}
     >
       {loading ? <Ring color="white" size={24} /> : children}
+      {TrailingIcon ? <TrailingIcon /> : null}
     </button>
   );
 };
