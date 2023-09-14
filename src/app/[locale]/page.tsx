@@ -9,6 +9,8 @@ import {
   IoMapOutline,
   IoSearchOutline,
 } from "react-icons/io5";
+import { Carousel } from "./components";
+import { ComponentProps } from "react";
 
 export default function Home() {
   const t = useTranslations("homepage");
@@ -82,6 +84,36 @@ function InvestInProjects() {
 
 function ExploreCountry() {
   const t = useTranslations("homepage");
+  const images: ComponentProps<typeof Carousel>["images"] = [
+    {
+      src: require("@/../../public/explore/datingscout-KKsG0nU7e4E-unsplash.jpg"),
+      alt: t("discover.imagesAlts.famagustaCoast"),
+    },
+    {
+      src: require("@/../../public/explore/katerina-bot-2ezMjZRw_tI-unsplash.jpg"),
+      alt: t("discover.imagesAlts.harbor"),
+    },
+    {
+      src: require("@/../../public/explore/emediong-umoh-FDAP2v2u3CA-unsplash.jpg"),
+      alt: t("discover.imagesAlts.girneHighway"),
+    },
+    {
+      src: require("@/../../public/explore/emediong-umoh-TSnBLv1VpM0-unsplash.jpg"),
+      alt: t("discover.imagesAlts.aerialLake"),
+    },
+    {
+      src: require("@/../../public/explore/emediong-umoh-LktLUKQ6YqY-unsplash.jpg"),
+      alt: t("discover.imagesAlts.sportCourts"),
+    },
+    {
+      src: require("@/../../public/explore/emediong-umoh-XH-fivqZp3w-unsplash.jpg"),
+      alt: t("discover.imagesAlts.colorFestival"),
+    },
+    {
+      src: require("@/../../public/explore/emediong-umoh-wVvO_31f1O4-unsplash.jpg"),
+      alt: t("discover.imagesAlts.aerialFamagusta"),
+    },
+  ];
   return (
     <div className="flex flex-col md:flex-row-reverse items-center gap-9 md:gap-24">
       <div className="md:flex-1 flex flex-col gap-4">
@@ -92,20 +124,7 @@ function ExploreCountry() {
           {t("discoverDescription")}
         </p>
       </div>
-      <div className="md:flex-1 flex flex-col gap-2 self-stretch">
-        <div className="bg-red-600 w-full aspect-[3/2] rounded"></div>
-        <div className="flex gap-2">
-          {Array(5)
-            .fill(0)
-            .map((_, index) => (
-              <div
-                className={`h-1 flex-1 rounded-[1px] ${index === 0 ? "bg-gray-800" : "bg-gray-800/30"
-                  }`}
-                key={index}
-              ></div>
-            ))}
-        </div>
-      </div>
+      <Carousel images={images} />
     </div>
   );
 }

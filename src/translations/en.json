@@ -24,7 +24,18 @@
     "guidanceDescription": "Tailored recommendations to align with your unique investment goals.",
     "transparencyTitle": "Transparency.",
     "transparencyDescription": "Complete clarity every step of your journey, ensuring informed decisions.",
-    "consultationButton": "Schedule a Free Consultation"
+    "consultationButton": "Schedule a Free Consultation",
+    "discover": {
+      "imagesAlts": {
+        "famagustaCoast": "A stunning view of the coasts of Famagusta, Northern Cyprus",
+        "sportCourts": "aerial view of basketball and tennis courts of Eastern Mediterranean University",
+        "aerialFamagusta": "aerial view of Famagusta, Northern Cyprus",
+        "colorFestival": "group of people at a color festival in Famagusta, Northern Cyprus",
+        "aerialLake": "An Aerial view of a lake surrounded by mountains in Northern Cyprus",
+        "harbor": "Beautiful Kyrenia (Girne) view, boats, castle and sea view of the most popular spot at Northern Cyprus",
+        "girneHighway": "Highway next to beach and nature in Girne, Northern Cyprus"
+      }
+    }
   },
   "blogs": {
     "title": "Blog",
