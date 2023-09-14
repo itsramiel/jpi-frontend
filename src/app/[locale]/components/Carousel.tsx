@@ -41,7 +41,7 @@ export function Carousel({ images }: CarouselProps) {
               <Image
                 width={600}
                 height={600}
-                src={`/explore/${image.name}`}
+                src={image.name}
                 alt={image.alt}
                 className="w-full h-full object-cover"
               />

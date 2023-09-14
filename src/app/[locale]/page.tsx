@@ -11,12 +11,32 @@ import {
 } from "react-icons/io5";
 import { Carousel } from "./components";
 import { ComponentProps } from "react";
+import { BasePageProps } from "@/types";
+import { TProject } from "./projects/types";
 
-export default function Home() {
+type TResponse = {
+  data: Array<TProject>;
+};
+
+export default async function Page({ params: { locale } }: BasePageProps) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects?locale=${locale}&populate[0]=coordinates&populate[1]=amenities&populate[2]=propertyTypes&populate[3]=nearbyPOI&populate[4]=pricing&populate[5]=images`,
+    { cache: "no-store" }
+  );
+
+  const { data } = (await response.json()) as TResponse;
+
+  return <HomePage data={data} />;
+}
+
+interface HomePageProps {
+  data: TResponse["data"];
+}
+function HomePage({ data }: HomePageProps) {
   const t = useTranslations("homepage");
   return (
     <div className="px-4 py-9 md:py-24 xl:py-36 flex flex-col gap-9 md:gap-16 xl:gap-24">
-      <InvestInProjects />
+      <InvestInProjects data={data} />
       <Seperator />
       <ExploreCountry />
       <Seperator />
@@ -51,8 +71,16 @@ function Seperator() {
   return <hr className="border-gray-950/10 border" />;
 }
 
-function InvestInProjects() {
+interface InvestInProjectsProps {
+  data: TResponse["data"];
+}
+function InvestInProjects({ data }: InvestInProjectsProps) {
   const t = useTranslations("homepage");
+
+  const images = data.map((item) => ({
+    name: `${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`,
+    alt: `a view of the project ${item.attributes.name} located in ${item.attributes.city}`,
+  }));
   return (
     <div className="flex flex-col md:flex-row gap-9 md:gap-24 items-center">
       <div className="md:flex-1 flex flex-col gap-6 items-center">
@@ -68,28 +96,14 @@ function InvestInProjects() {
           {t("premiumPropertyButton")}
         </Button>
       </div>
-      <div className="md:flex-1 flex flex-col gap-2 self-stretch md:self-auto">
-        <div className="bg-red-600 w-full aspect-[3/2] rounded"></div>
-        <div className="flex gap-2">
-          {Array(5)
-            .fill(0)
-            .map((_, index) => (
-              <div
-                className={`h-1 flex-1 rounded-[1px] ${
-                  index === 0 ? "bg-gray-800" : "bg-gray-800/30"
-                }`}
-                key={index}
-              ></div>
-            ))}
-        </div>
-      </div>
+      <Carousel images={images} />
     </div>
   );
 }
 
 function ExploreCountry() {
   const t = useTranslations("homepage");
-  const images: ComponentProps<typeof Carousel>["images"] = [
+  let images: ComponentProps<typeof Carousel>["images"] = [
     {
       name: "datingscout-KKsG0nU7e4E-unsplash.jpg",
       alt: t("discover.imagesAlts.famagustaCoast"),
@@ -119,6 +133,12 @@ function ExploreCountry() {
       alt: t("discover.imagesAlts.aerialFamagusta"),
     },
   ];
+
+  images = images.map((image) => {
+    image.name = `/explore/${image.name}`;
+    return image;
+  });
+
   return (
     <div className="flex flex-col md:flex-row-reverse items-center gap-9 md:gap-24">
       <div className="md:flex-1 flex flex-col gap-4">
