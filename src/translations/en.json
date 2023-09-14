@@ -6,6 +6,26 @@
     "close": "close",
     "errorOccured": "An error occured. Please try again later."
   },
+  "homepage": {
+    "partneringTitle": "Partnering with the pioneers of Northern Cyprus Construction",
+    "dovecAlt": "dovec logo",
+    "noyanlarAlt": "noyanlar logo",
+    "investTitle": "Invest in Northern Cyprus Real Estate like a Professional",
+    "investDescription": "Jokanda Property Investment empowers investors with clarity and analytics in Northern Cyprus real estate. We're your guide to informed investing.",
+    "premiumPropertyButton": "Our Premium Property Selection",
+    "discoverTitle": "Discover Your Next Investment and Paradise",
+    "discoverDescription": "From profit-driven real estate to peaceful living, Northern Cyprus offers the best of both worlds.",
+    "chooseTitle": "Why choose Jokanda?",
+    "insightsTitle": "Data-Driven Insights.",
+    "insightsDescription": "Beyond the surface with deep-dive numbers to guide your investments.",
+    "expertiseTitle": "Local Expertise.",
+    "expertiseDescription": "An adept understanding of the Northern Cyprus market with the latest trends at our fingertips.",
+    "guidanceTitle": "Personalized Guidance.",
+    "guidanceDescription": "Tailored recommendations to align with your unique investment goals.",
+    "transparencyTitle": "Transparency.",
+    "transparencyDescription": "Complete clarity every step of your journey, ensuring informed decisions.",
+    "consultationButton": "Schedule a Free Consultation"
+  },
   "blogs": {
     "title": "Blog",
     "description": "Browse from our list of blogs which spans different wide variety of topic in the field of property investment",

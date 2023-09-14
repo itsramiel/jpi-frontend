@@ -22,7 +22,7 @@ const button = cva("font-medium text-gray-50 rounded flex items-center gap-4", {
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof button> {
+  VariantProps<typeof button> {
   trailingIcon?: IconType;
   children: string;
 }
@@ -42,7 +42,7 @@ export const Button = ({
       {...props}
     >
       {loading ? <Ring color="white" size={24} /> : children}
-      {TrailingIcon ? <TrailingIcon /> : null}
+      {TrailingIcon ? <TrailingIcon className="mirror" /> : null}
     </button>
   );
 };
