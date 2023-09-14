@@ -2,7 +2,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LocaleSegmentProps } from "./type";
-import { Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 
 export const metadata: Metadata = {
@@ -31,13 +31,16 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
-      <body className="max-w-6xl mx-auto px-4">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
+        <body>
+          <div className="max-w-6xl mx-auto px-4">
+            <Navbar />
+            {children}
+          </div>
+          <Footer />
+        </body>
+      </html>
+    </NextIntlClientProvider>
   );
 }
