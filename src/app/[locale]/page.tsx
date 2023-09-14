@@ -28,13 +28,17 @@ export default function Home() {
         </h2>
         <div className="flex flex-row flex-wrap justify-center gap-4 items-center">
           <Image
-            src={require("@/../public/partners/dovec-logo-light.png")}
+            src={"/partners/dovec-logo-light.png"}
             alt={t("dovecAlt")}
+            width={100}
+            height={36}
             className="w-[6.25rem] object-contain"
           />
           <Image
-            src={require("@/../public/partners/noyanlar-logo-light.png")}
+            src={"/partners/noyanlar-logo-light.png"}
             alt={t("noyanlarAlt")}
+            width={100}
+            height={23}
             className="w-[6.25rem] object-contain"
           />
         </div>
@@ -71,8 +75,9 @@ function InvestInProjects() {
             .fill(0)
             .map((_, index) => (
               <div
-                className={`h-1 flex-1 rounded-[1px] ${index === 0 ? "bg-gray-800" : "bg-gray-800/30"
-                  }`}
+                className={`h-1 flex-1 rounded-[1px] ${
+                  index === 0 ? "bg-gray-800" : "bg-gray-800/30"
+                }`}
                 key={index}
               ></div>
             ))}
@@ -86,31 +91,31 @@ function ExploreCountry() {
   const t = useTranslations("homepage");
   const images: ComponentProps<typeof Carousel>["images"] = [
     {
-      src: require("@/../../public/explore/datingscout-KKsG0nU7e4E-unsplash.jpg"),
+      name: "datingscout-KKsG0nU7e4E-unsplash.jpg",
       alt: t("discover.imagesAlts.famagustaCoast"),
     },
     {
-      src: require("@/../../public/explore/katerina-bot-2ezMjZRw_tI-unsplash.jpg"),
+      name: "katerina-bot-2ezMjZRw_tI-unsplash.jpg",
       alt: t("discover.imagesAlts.harbor"),
     },
     {
-      src: require("@/../../public/explore/emediong-umoh-FDAP2v2u3CA-unsplash.jpg"),
+      name: "emediong-umoh-FDAP2v2u3CA-unsplash.jpg",
       alt: t("discover.imagesAlts.girneHighway"),
     },
     {
-      src: require("@/../../public/explore/emediong-umoh-TSnBLv1VpM0-unsplash.jpg"),
+      name: "emediong-umoh-TSnBLv1VpM0-unsplash.jpg",
       alt: t("discover.imagesAlts.aerialLake"),
     },
     {
-      src: require("@/../../public/explore/emediong-umoh-LktLUKQ6YqY-unsplash.jpg"),
+      name: "emediong-umoh-LktLUKQ6YqY-unsplash.jpg",
       alt: t("discover.imagesAlts.sportCourts"),
     },
     {
-      src: require("@/../../public/explore/emediong-umoh-XH-fivqZp3w-unsplash.jpg"),
+      name: "emediong-umoh-XH-fivqZp3w-unsplash.jpg",
       alt: t("discover.imagesAlts.colorFestival"),
     },
     {
-      src: require("@/../../public/explore/emediong-umoh-wVvO_31f1O4-unsplash.jpg"),
+      name: "emediong-umoh-wVvO_31f1O4-unsplash.jpg",
       alt: t("discover.imagesAlts.aerialFamagusta"),
     },
   ];

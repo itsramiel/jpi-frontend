@@ -1,13 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale } from "next-intl";
-import Image, { ImageProps } from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
 
 interface CarouselProps {
-  images: Array<{ src: ImageProps["src"]; alt: string }>;
+  images: Array<{ name: string; alt: string }>;
 }
 export function Carousel({ images }: CarouselProps) {
   const locale = useLocale();
@@ -39,7 +39,9 @@ export function Carousel({ images }: CarouselProps) {
           {images.map((image, index) => (
             <div className="flex-[0_0_100%]" key={index}>
               <Image
-                src={image.src}
+                width={600}
+                height={600}
+                src={`/explore/${image.name}`}
                 alt={image.alt}
                 className="w-full h-full object-cover"
               />
@@ -51,8 +53,9 @@ export function Carousel({ images }: CarouselProps) {
         {images.map((_, index) => (
           <div
             onClick={() => emblaApi?.scrollTo(index)}
-            className={`h-1 flex-1 rounded-[1px] transition-colors cursor-pointer duration-500 ${index === currentIndex ? "bg-gray-800" : "bg-gray-800/30"
-              }`}
+            className={`h-1 flex-1 rounded-[1px] transition-colors cursor-pointer duration-500 ${
+              index === currentIndex ? "bg-gray-800" : "bg-gray-800/30"
+            }`}
             key={index}
           ></div>
         ))}
