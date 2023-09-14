@@ -13,7 +13,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="px-4 py-9 flex flex-col gap-9">
+    <div className="px-4 py-9 md:py-24 xl:py-36 flex flex-col gap-9 md:gap-16 xl:gap-24">
       <InvestInProjects />
       <Seperator />
       <ExploreCountry />
@@ -47,7 +47,7 @@ function Seperator() {
 
 function InvestInProjects() {
   return (
-    <div className="flex flex-col md:flex-row gap-9 items-center">
+    <div className="flex flex-col md:flex-row gap-9 md:gap-24 items-center">
       <div className="md:flex-1 flex flex-col gap-6 items-center">
         <div className="flex flex-col gap-4">
           <h2 className="text-gray-900 text-center text-4xl font-semibold">
@@ -63,7 +63,7 @@ function InvestInProjects() {
           Our Premium Property Selection
         </Button>
       </div>
-      <div className="md:flex-1 flex flex-col gap-2 self-stretch">
+      <div className="md:flex-1 flex flex-col gap-2 self-stretch md:self-auto">
         <div className="bg-red-600 w-full aspect-[3/2] rounded"></div>
         <div className="flex gap-2">
           {Array(5)
@@ -84,7 +84,7 @@ function InvestInProjects() {
 
 function ExploreCountry() {
   return (
-    <div className="flex flex-col md:flex-row-reverse items-center gap-9">
+    <div className="flex flex-col md:flex-row-reverse items-center gap-9 md:gap-24">
       <div className="md:flex-1 flex flex-col gap-4">
         <h2 className="text-gray-900 text-center text-4xl font-semibold">
           Discover Your Next Investment and Paradise
@@ -115,7 +115,7 @@ function ExploreCountry() {
 
 function SellingPoints() {
   return (
-    <div className="flex flex-col gap-8 items-center">
+    <div className="flex flex-col gap-8 md:gap-16 xl:gap-24 items-center">
       <div className="flex flex-col items-center gap-4">
         <h2 className="text-gray-900 text-center text-4xl font-semibold">
           Why choose Jokanda?
