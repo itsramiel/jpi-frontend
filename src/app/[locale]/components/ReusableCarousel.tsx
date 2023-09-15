@@ -3,9 +3,18 @@ import Autoplay from "embla-carousel-autoplay";
 import { Fragment, useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
 
+export type TCarouselRenderItem<T> = (
+  info: TCarouselRenderItemInfo<T>
+) => React.ReactNode;
+type TCarouselRenderItemInfo<T> = {
+  item: T;
+  index: number;
+  activeIndex: number;
+};
+
 interface ReusableCarouselProps<T> {
   data: T[];
-  renderItem: (item: T, index: number) => React.ReactNode;
+  renderItem: TCarouselRenderItem<T>;
   keyExtractor: (item: T, index: number) => string;
 }
 export function ReusableCarousel<T>({
@@ -14,7 +23,7 @@ export function ReusableCarousel<T>({
   keyExtractor,
 }: ReusableCarouselProps<T>) {
   const locale = useLocale();
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
@@ -26,7 +35,7 @@ export function ReusableCarousel<T>({
   );
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setCurrentIndex(emblaApi.selectedScrollSnap());
+    setActiveIndex(emblaApi.selectedScrollSnap());
   }, []);
 
   useEffect(() => {
@@ -45,7 +54,7 @@ export function ReusableCarousel<T>({
           <div className="flex-[0_0_100%]">
             {data.map((item, index) => (
               <Fragment key={keyExtractor(item, index)}>
-                {renderItem(item, index)}
+                {renderItem({ item, index, activeIndex })}
               </Fragment>
             ))}
           </div>
@@ -57,7 +66,7 @@ export function ReusableCarousel<T>({
           <div
             onClick={() => emblaApi?.scrollTo(index)}
             className={`h-1 flex-1 rounded-[1px] transition-colors cursor-pointer duration-500 ${
-              index === currentIndex ? "bg-gray-800" : "bg-gray-800/30"
+              index === activeIndex ? "bg-gray-800" : "bg-gray-800/30"
             }`}
             key={keyExtractor(item, index)}
           ></div>
