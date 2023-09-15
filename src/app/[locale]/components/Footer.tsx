@@ -1,15 +1,24 @@
 /*eslint i18next/no-literal-string: 0*/
 
-import Link from "next/link";
 import {
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
+import Link from "next/link";
+import classNames from "classnames";
 
-export function Footer() {
+interface FooterProps {
+  className?: string;
+}
+export function Footer({ className }: FooterProps) {
   return (
-    <div className="flex justify-center p-4 md:py-8 bg-gray-50 border-t border-gray-950/10">
+    <footer
+      className={classNames(
+        "flex justify-center p-4 md:py-8 bg-gray-50 border-t border-gray-950/10",
+        className
+      )}
+    >
       <div className="max-w-6xl text-gray-700 text-sm flex-1 flex justify-between">
         <div className="flex flex-col justify-between">
           <p className="font-semibold">Jokanda Property Investment</p>
@@ -31,6 +40,6 @@ export function Footer() {
           <Link href="#">Contact us</Link>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
