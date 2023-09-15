@@ -1,7 +1,3 @@
-import { Button } from "@/components/ContactForm/components";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { IconType } from "react-icons";
 import {
   IoArrowForwardSharp,
   IoBarChartOutline,
@@ -9,9 +5,16 @@ import {
   IoMapOutline,
   IoSearchOutline,
 } from "react-icons/io5";
-import { ProjectsCarousel, DiscoverCarousel } from "./components";
+import Image from "next/image";
+import Link from "next-intl/link";
+import { IconType } from "react-icons";
+import { useTranslations } from "next-intl";
+
 import { BasePageProps } from "@/types";
+import { Button } from "@/components/ContactForm/components";
+
 import { TProject } from "./projects/types";
+import { ProjectsCarousel, DiscoverCarousel } from "./components";
 
 type TResponse = {
   data: Array<TProject>;
@@ -87,9 +90,11 @@ function InvestInProjects({ data }: InvestInProjectsProps) {
             {t("investDescription")}
           </p>
         </div>
-        <Button trailingIcon={IoArrowForwardSharp}>
-          {t("premiumPropertyButton")}
-        </Button>
+        <Link href="/projects">
+          <Button trailingIcon={IoArrowForwardSharp}>
+            {t("premiumPropertyButton")}
+          </Button>
+        </Link>
       </div>
       <ProjectsCarousel data={data} />
     </div>
@@ -184,9 +189,11 @@ function SellingPoints() {
           </div>
         </div>
       </div>
-      <Button trailingIcon={IoArrowForwardSharp}>
-        {t("consultationButton")}
-      </Button>
+      <Link href="/contact">
+        <Button trailingIcon={IoArrowForwardSharp}>
+          {t("consultationButton")}
+        </Button>
+      </Link>
     </div>
   );
 }
