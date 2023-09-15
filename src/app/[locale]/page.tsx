@@ -9,8 +9,7 @@ import {
   IoMapOutline,
   IoSearchOutline,
 } from "react-icons/io5";
-import { Carousel } from "./components";
-import { ComponentProps } from "react";
+import { ProjectsCarousel, DiscoverCarousel } from "./components";
 import { BasePageProps } from "@/types";
 import { TProject } from "./projects/types";
 
@@ -96,14 +95,14 @@ function InvestInProjects({ data }: InvestInProjectsProps) {
           {t("premiumPropertyButton")}
         </Button>
       </div>
-      <Carousel images={images} />
+      <ProjectsCarousel images={images} />
     </div>
   );
 }
 
 function ExploreCountry() {
   const t = useTranslations("homepage");
-  let images: ComponentProps<typeof Carousel>["images"] = [
+  let images = [
     {
       name: "datingscout-KKsG0nU7e4E-unsplash.jpg",
       alt: t("discover.imagesAlts.famagustaCoast"),
@@ -149,7 +148,7 @@ function ExploreCountry() {
           {t("discoverDescription")}
         </p>
       </div>
-      <Carousel images={images} />
+      <DiscoverCarousel images={images} />
     </div>
   );
 }
