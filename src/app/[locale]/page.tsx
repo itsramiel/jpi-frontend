@@ -157,7 +157,7 @@ function ExploreCountry() {
 function SellingPoints() {
   const t = useTranslations("homepage");
   return (
-    <div className="flex flex-col gap-8 md:gap-16 xl:gap-24 items-center">
+    <div className="flex flex-col gap-9 md:gap-16 xl:gap-24 items-center">
       <div className="flex flex-col items-center gap-4">
         <h2 className="text-gray-900 text-center text-4xl font-semibold">
           {t("chooseTitle")}
@@ -207,7 +207,7 @@ function SellingPoint({ icon: Icon, title, subtitle }: SellingPointProps) {
   return (
     <div className="flex-1 flex flex-col gap-2">
       <Icon className="text-gray-700 mirror" />
-      <p className="text-gray-600">
+      <p className="text-gray-600 font-medium">
         <span className="text-gray-700 font-semibold">{title}</span>
         {subtitle}
       </p>

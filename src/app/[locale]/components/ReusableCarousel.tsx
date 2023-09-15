@@ -47,7 +47,7 @@ export function ReusableCarousel<T>({
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="md:flex-1 flex flex-col gap-2 self-start md:self-auto">
+    <div className="md:flex-1 flex flex-col gap-2">
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden aspect-[3/2] rounded">
         <div className="flex h-full">
