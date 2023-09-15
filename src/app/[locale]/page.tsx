@@ -10,8 +10,8 @@ import Link from "next-intl/link";
 import { IconType } from "react-icons";
 import { useTranslations } from "next-intl";
 
+import { Button } from "@/components";
 import { BasePageProps } from "@/types";
-import { Button } from "@/components/ContactForm/components";
 
 import { TProject } from "./projects/types";
 import { ProjectsCarousel, DiscoverCarousel } from "./components";

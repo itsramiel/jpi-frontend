@@ -1,18 +1,13 @@
 "use client";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
+import { IoCheckmarkSharp } from "react-icons/io5";
 import { Controller, useForm } from "react-hook-form";
 
-import { isEmail, isPhoneNumber } from "./ContactForm/utils";
-
-import {
-  AlertMessage,
-  Button,
-  Input,
-  TextAreaInput,
-} from "./ContactForm/components";
+import { Button } from ".";
 import { useSendMessage } from "./ContactForm/hooks";
-import { useRef } from "react";
-import { IoCheckmarkSharp } from "react-icons/io5";
+import { isEmail, isPhoneNumber } from "./ContactForm/utils";
+import { AlertMessage, Input, TextAreaInput } from "./ContactForm/components";
 
 export const ContactForm = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
