@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { Controller, useForm } from "react-hook-form";
 
-import { Button } from ".";
+import { Button } from "./Button";
 import { useSendMessage } from "./ContactForm/hooks";
 import { isEmail, isPhoneNumber } from "./ContactForm/utils";
 import { AlertMessage, Input, TextAreaInput } from "./ContactForm/components";
