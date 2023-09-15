@@ -76,10 +76,6 @@ interface InvestInProjectsProps {
 function InvestInProjects({ data }: InvestInProjectsProps) {
   const t = useTranslations("homepage");
 
-  const images = data.map((item) => ({
-    name: `${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`,
-    alt: `a view of the project ${item.attributes.name} located in ${item.attributes.city}`,
-  }));
   return (
     <div className="flex flex-col md:flex-row gap-9 md:gap-24 items-center">
       <div className="md:flex-1 flex flex-col gap-6 items-center">
@@ -95,7 +91,7 @@ function InvestInProjects({ data }: InvestInProjectsProps) {
           {t("premiumPropertyButton")}
         </Button>
       </div>
-      <ProjectsCarousel images={images} />
+      <ProjectsCarousel data={data} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useLocale } from "next-intl";
 import Autoplay from "embla-carousel-autoplay";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
 
 export type TCarouselRenderItem<T> = (
@@ -51,13 +51,11 @@ export function ReusableCarousel<T>({
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden aspect-[3/2] rounded">
         <div className="flex h-full">
-          <div className="flex-[0_0_100%]">
-            {data.map((item, index) => (
-              <Fragment key={keyExtractor(item, index)}>
-                {renderItem({ item, index, activeIndex })}
-              </Fragment>
-            ))}
-          </div>
+          {data.map((item, index) => (
+            <div className="flex-[0_0_100%]" key={keyExtractor(item, index)}>
+              {renderItem({ item, index, activeIndex })}
+            </div>
+          ))}
         </div>
       </div>
       {/* Pagination */}
