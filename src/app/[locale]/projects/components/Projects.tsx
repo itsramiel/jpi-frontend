@@ -1,8 +1,9 @@
 "use client";
+
 import { useTranslations } from "next-intl";
-import { ImageCarousel } from "./ImageCarousel";
-import { TProject } from "../types";
 import { useRouter } from "next-intl/client";
+import { ImageCarousel } from "./ImageCarousel";
+import { TProject, TProperty } from "../../types";
 
 interface ProjectsProps {
   projects: TProject[];
@@ -13,11 +14,15 @@ export const Projects = ({ projects }: ProjectsProps) => {
   return projects.map(({ id, attributes }) => {
     const propertyTypes = Array.from(
       new Set(
-        attributes.propertyTypes.map(
-          (propertyType) => propertyType.property.category
-        )
+        attributes.properties.data.map((property) => property.attributes.name)
       )
     );
+
+    const cheapestProperty = getCheapestProperty(attributes.properties.data);
+
+    if (!cheapestProperty) {
+      throw Error("cannot determine cheapest property from project");
+    }
 
     const firstNearbyPOI = attributes.nearbyPOI[0];
     const formatter = new Intl.NumberFormat(attributes.locale, {
@@ -62,12 +67,26 @@ export const Projects = ({ projects }: ProjectsProps) => {
           <p className="text-gray-800 text-sm font-bold">
             {Intl.NumberFormat(attributes.locale, {
               style: "currency",
-              currency: attributes.pricing.currency,
+              currency:
+                cheapestProperty.attributes.currency.data.attributes.code,
               maximumFractionDigits: 0,
-            }).format(attributes.pricing.startingPrice)}
+            }).format(cheapestProperty.attributes.price)}
           </p>
         </div>
       </div>
     );
   });
 };
+
+function getCheapestProperty(properties: Array<TProperty>) {
+  if (properties.length === 0) return null;
+  let minIndex = 0;
+  let minPrice = properties[0].attributes.price;
+  properties.forEach((property, index) => {
+    if (property.attributes.price < minPrice) {
+      minIndex = index;
+      minPrice = property.attributes.price;
+    }
+  });
+  return properties[minIndex];
+}

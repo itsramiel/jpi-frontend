@@ -1,10 +1,21 @@
+import qs from "qs";
+
 import { BasePageProps } from "@/types";
 import { TBlogsResponse } from "./types";
 import { Blogs, Header } from "./components";
 
 export default async function BlogPage({ params: { locale } }: BasePageProps) {
+  const query = qs.stringify(
+    {
+      fields: ["title", "publishedAt", "locale"],
+      populate: ["author", "imageThumbnail"],
+      locale,
+    },
+    { encode: false }
+  );
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs?locale=${locale}&populate[0]=author&populate[1]=imageThumbnail`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs?${query}`,
     {
       cache: "no-store",
     }

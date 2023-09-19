@@ -1,14 +1,13 @@
-import { TProject } from "../../types";
 import { IoLocationOutline, IoMapOutline, IoPinOutline } from "react-icons/io5";
 import { TbMoneybag } from "react-icons/tb";
 import { useLocale, useTranslations } from "next-intl";
 import { SectionHeader } from "./SectionHeader";
 import { SectionItems } from "./SectionItems";
 import { PropertyTypesView } from "./PropertyTypesView";
-import { formatCurrency } from "@/utils";
 import { ImageCarousel } from "./ImageCarousel";
 import { Map } from "./Map";
 import { ContactForm } from "@/components";
+import { TProject } from "@/app/[locale]/types";
 
 interface ProjectProps {
   project: TProject;
@@ -17,7 +16,6 @@ export const Project = ({ project }: ProjectProps) => {
   const t = useTranslations("projects");
   const tContact = useTranslations("conatct.form");
   const locale = useLocale();
-  const { pricing } = project.attributes;
   return (
     <div className="my-8 mx-auto max-w-6xl flex flex-col gap-8">
       <div className="flex flex-col gap-4">
@@ -69,20 +67,15 @@ export const Project = ({ project }: ProjectProps) => {
             />
           </div>
           <div className=" my-4 border-[1px] border-gray-400"></div>
-          <PropertyTypesView propertyTypes={project.attributes.propertyTypes} />
+          <PropertyTypesView propertyTypes={project.attributes.properties} />
           <div className="flex flex-col gap-3">
             <SectionHeader Icon={TbMoneybag} title={t("pricing")} />
             <SectionItems
               items={[
-                t("startingPrice", {
-                  price: formatCurrency({
-                    value: pricing.startingPrice,
-                    currency: pricing.currency,
-                    locale,
-                  }),
+                t("downPayment", {
+                  percentage: project.attributes.downPaymentPercentage,
                 }),
-                t("downPayment", { percentage: pricing.downPayment }),
-                ...(pricing.fullPaymentDiscount
+                ...(project.attributes.fullPaymentDiscount
                   ? [t("fullPaymentDiscount")]
                   : []),
               ]}

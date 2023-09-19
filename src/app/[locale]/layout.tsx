@@ -1,7 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { LocaleSegmentProps } from "./type";
+import { LocaleSegmentProps } from "./types";
 import { Footer, Navbar } from "./components";
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 

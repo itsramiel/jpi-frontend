@@ -19,7 +19,6 @@ export function Blogs({ blogs }: BlogsProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 px-3 gap-10">
       {blogs.map((blog) => {
-        console.log("blog", blog);
         return (
           <div
             key={blog.id}

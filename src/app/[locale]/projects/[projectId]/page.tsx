@@ -1,4 +1,6 @@
-import { TProject } from "../types";
+import qs from "qs";
+
+import { TProject } from "../../types";
 import { Project } from "./components";
 
 interface PageProps {
@@ -10,8 +12,26 @@ type TResponse = {
 };
 
 export default async function Page({ params: { projectId } }: PageProps) {
+  const query = qs.stringify(
+    {
+      populate: {
+        coordinates: true,
+        amenities: true,
+        nearbyPOI: true,
+        images: true,
+        properties: {
+          populate: {
+            property_type: true,
+            currency: true,
+          },
+        },
+      },
+      locale: "en",
+    },
+    { encode: false }
+  );
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects/${projectId}?&populate[0]=coordinates&populate[1]=amenities&populate[2]=propertyTypes&populate[3]=nearbyPOI&populate[4]=pricing&populate[5]=images`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects/${projectId}?&${query}`,
     {
       cache: "no-store",
     }

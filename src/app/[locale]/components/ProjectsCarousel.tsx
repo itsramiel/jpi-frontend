@@ -6,8 +6,8 @@ import { useCallback } from "react";
 import classNames from "classnames";
 import { useRouter } from "next-intl/client";
 
-import { TProject } from "../projects/types";
 import { ReusableCarousel, TCarouselRenderItem } from "./ReusableCarousel";
+import { TProject } from "../types";
 
 interface ProjectsCarouselProps {
   data: Array<TProject>;

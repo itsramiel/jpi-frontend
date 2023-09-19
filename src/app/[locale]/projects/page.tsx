@@ -1,14 +1,31 @@
+import qs from "qs";
 import { BasePageProps } from "@/types";
+
 import { Header, Projects } from "./components";
-import { TProject } from "./types";
+import { TProject } from "../types";
 
 type TResponse = {
   data: Array<TProject>;
 };
 
 export default async function Page({ params: { locale } }: BasePageProps) {
+  const query = qs.stringify({
+    populate: {
+      coordinates: true,
+      amenities: true,
+      nearbyPOI: true,
+      images: true,
+      properties: {
+        populate: {
+          property_type: true,
+          currency: true,
+        },
+      },
+    },
+    locale,
+  });
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects?locale=${locale}&populate[0]=coordinates&populate[1]=amenities&populate[2]=propertyTypes&populate[3]=nearbyPOI&populate[4]=pricing&populate[5]=images`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects?${query}`,
     { cache: "no-store" }
   );
 

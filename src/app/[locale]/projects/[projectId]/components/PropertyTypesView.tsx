@@ -1,13 +1,14 @@
 "use client";
+
 import { IoHomeOutline } from "react-icons/io5";
-import { TProject } from "../../types";
 import { SectionHeader } from "./SectionHeader";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import { SectionItems } from "./SectionItems";
+import { TProject } from "@/app/[locale]/types";
 
 interface PropertyTypesViewProps {
-  propertyTypes: TProject["attributes"]["propertyTypes"];
+  propertyTypes: TProject["attributes"]["properties"];
 }
 export const PropertyTypesView = ({
   propertyTypes,
@@ -24,7 +25,7 @@ export const PropertyTypesView = ({
           onPropertyClick={(index) => setActivePropertyIndex(index)}
         />
         <SectionItems
-          items={propertyTypes[activePropertyIndex].property.features}
+          items={propertyTypes.data[activePropertyIndex].attributes.features}
         />
       </div>
     </div>
@@ -33,7 +34,7 @@ export const PropertyTypesView = ({
 
 interface PropertyTypesPickerProps {
   activeIndex: number;
-  propertyTypes: TProject["attributes"]["propertyTypes"];
+  propertyTypes: TProject["attributes"]["properties"];
   onPropertyClick: (propertyIndex: number) => void;
 }
 
@@ -68,7 +69,7 @@ function PropertyTypesPicker({
       ref={containerRef}
       className="flex gap-2 overflow-scroll scrollbar-hide relative"
     >
-      {propertyTypes.map((item, index) => {
+      {propertyTypes.data.map((item, index) => {
         const active = index === activeIndex;
         return (
           <div
@@ -84,7 +85,7 @@ function PropertyTypesPicker({
                 active ? "text-yellow-600" : "text-gray-600"
               } text-lg font-medium`}
             >
-              {item.property.name}
+              {item.attributes.name}
             </p>
           </div>
         );

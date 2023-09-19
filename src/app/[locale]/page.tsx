@@ -5,6 +5,7 @@ import {
   IoMapOutline,
   IoSearchOutline,
 } from "react-icons/io5";
+import qs from "qs";
 import Image from "next/image";
 import Link from "next-intl/link";
 import { IconType } from "react-icons";
@@ -13,7 +14,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components";
 import { BasePageProps } from "@/types";
 
-import { TProject } from "./projects/types";
+import { TProject } from "./types";
 import { ProjectsCarousel, DiscoverCarousel } from "./components";
 
 type TResponse = {
@@ -21,8 +22,17 @@ type TResponse = {
 };
 
 export default async function Page({ params: { locale } }: BasePageProps) {
+  const query = qs.stringify(
+    {
+      populate: "images",
+      fields: ["name", "city"],
+      locale,
+    },
+    { encode: false }
+  );
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects?populate=images&fields=name&locale=${locale}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects?${query}`,
     { cache: "no-store" }
   );
 

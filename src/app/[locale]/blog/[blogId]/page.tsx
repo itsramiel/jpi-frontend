@@ -1,8 +1,11 @@
-import { BasePageProps } from "@/types";
-import { TBlogResponse } from "./types";
-import { formatDate } from "@/utils";
+import qs from "qs";
 import Image from "next/image";
 import Markdown from "markdown-to-jsx";
+
+import { formatDate } from "@/utils";
+import { BasePageProps } from "@/types";
+
+import { TBlogResponse } from "./types";
 
 interface PageProps {
   params: {
@@ -13,8 +16,17 @@ interface PageProps {
 export default async function Page({
   params: { blogId, locale },
 }: PageProps & BasePageProps) {
+  const query = qs.stringify(
+    {
+      fields: ["title", "publishedAt", "content", "locale"],
+      populate: ["author", "imageThumbnail"],
+      locale,
+    },
+    { encode: false }
+  );
+
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?populate[0]=author&populate[1]=imageThumbnail&locale=${locale}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?${query}`,
     { cache: "no-store" }
   );
 
