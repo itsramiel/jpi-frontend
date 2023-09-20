@@ -14,7 +14,10 @@ export const Projects = ({ projects }: ProjectsProps) => {
   return projects.map(({ id, attributes }) => {
     const propertyTypes = Array.from(
       new Set(
-        attributes.properties.data.map((property) => property.attributes.name)
+        attributes.properties.data.map(
+          (property) =>
+            property.attributes.property_type.data.attributes.displayName
+        )
       )
     );
 
