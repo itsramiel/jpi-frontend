@@ -1,4 +1,4 @@
-import React, { ComponentRef } from "react";
+import React, { ComponentRef, useRef } from "react";
 import * as RadixSelect from "@radix-ui/react-select";
 import { IoCheckmark, IoChevronDown, IoChevronUp } from "react-icons/io5";
 
@@ -28,7 +28,12 @@ export function Select({
         </RadixSelect.Icon>
       </RadixSelect.Trigger>
       <RadixSelect.Portal>
-        <RadixSelect.Content className="bg-zinc-100 rounded shadow-black/20 shadow">
+        <RadixSelect.Content
+          className="bg-zinc-100 rounded shadow-black/20 shadow"
+          ref={(ref) =>
+            ref?.addEventListener("touchend", (e) => e.preventDefault())
+          }
+        >
           <RadixSelect.ScrollUpButton className="flex flex-col items-center text-gray-700">
             <IoChevronUp />
           </RadixSelect.ScrollUpButton>
