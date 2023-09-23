@@ -37,10 +37,8 @@ export default async function RootLayout({
       <DirectionProvider dir={dir}>
         <html lang={locale} dir={dir}>
           <body className="min-h-screen flex flex-col">
-            <div className="w-full max-w-6xl mx-auto px-4">
-              <Navbar />
-              {children}
-            </div>
+            <Navbar />
+            <div className="w-full max-w-6xl mx-auto px-4">{children}</div>
             <Footer className="mt-auto" />
           </body>
         </html>

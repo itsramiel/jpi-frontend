@@ -1,49 +1,31 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useRouter } from "next-intl/client";
 import Image from "next/image";
-import { useState } from "react";
-import { IoCloseSharp, IoMenuSharp } from "react-icons/io5";
+import Link from "next-intl/link";
+import { useTranslations } from "next-intl";
+import { LanguageControl } from "./Navbar/components";
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-
   const t = useTranslations("labels");
 
-  const onLinkClick = (route: string) => {
-    setIsOpen(false);
-    router.push(route);
-  };
-
   return (
-    <div className="flex justify-between items-center relative">
-      <a onClick={() => onLinkClick("/")} className="cursor-pointer">
-        <Image
-          src={require("@/../public/jpi-logo-optimized.png")}
-          alt="logo"
-          width={40}
-          height={40}
-        />
-      </a>
-      <button className="sm:hidden" onClick={() => setIsOpen((prev) => !prev)}>
-        {isOpen ? <IoCloseSharp size={24} /> : <IoMenuSharp size={24} />}
-      </button>
-      <div
-        className={`bg-white p-3 sm:p-0 flex-col sm:flex-row font-semibold gap-4 text-gray-700 absolute right-0 left-0 top-full sm:static border-t sm:border-0 border-t-gray-300 ${
-          isOpen ? "flex" : "hidden"
-        } sm:flex`}
-      >
-        <a onClick={() => onLinkClick("/projects")} className="cursor-pointer">
-          {t("projects")}
-        </a>
-        <a onClick={() => onLinkClick("/blog")} className="cursor-pointer">
-          {t("blog")}
-        </a>
-        <a onClick={() => onLinkClick("/contact")} className="cursor-pointer">
-          {t("contactUs")}
-        </a>
+    <div className="p-4 border-b border-b-black/10">
+      <div className="max-w-6xl mx-auto flex justify-between">
+        <div className="flex flex-row gap-9 items-center">
+          <Link href={"/"} className="cursor-pointer">
+            <Image src={"/Logo.png"} alt="logo" width={31.18} height={20} />
+          </Link>
+          <div className={"flex flex-row gap-9 text-gray-700 font-medium"}>
+            <Link href={"/projects"} className="cursor-pointer">
+              {t("projects")}
+            </Link>
+            <Link href={"/blog"} className="cursor-pointer">
+              {t("blog")}
+            </Link>
+            <Link href={"/contact"} className="cursor-pointer">
+              {t("contactUs")}
+            </Link>
+          </div>
+        </div>
+        <LanguageControl />
       </div>
     </div>
   );
