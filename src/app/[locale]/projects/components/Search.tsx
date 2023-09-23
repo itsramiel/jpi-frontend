@@ -7,37 +7,64 @@ import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { useDebounce } from "use-debounce";
 import { Select, SelectItem, SelectSeparator } from "./Select";
+import { TPropertyType } from "../../types";
 
-export function Search() {
+interface SearchProps {
+  bedroomCounts: Array<number>;
+  propertyTypes: Array<TPropertyType>;
+}
+
+export function Search({ bedroomCounts, propertyTypes }: SearchProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const pathName = usePathname();
-  const [search, setSearch] = useState(searchParams.get("search") ?? "");
-  const [bedroomCount, setBedroomCount] = useState("");
-  const [propertyType, setPropertyType] = useState("");
-  const [debouncedSearch] = useDebounce(search, 750);
+  const [form, setForm] = useState({
+    search: searchParams.get("search") ?? "",
+    bedroomCount: searchParams.get("bedroomCount") ?? "",
+    propertyType: searchParams.get("propertyType") ?? "",
+  });
+  const [debouncedForm] = useDebounce(form, 750);
 
+  const pathName = usePathname();
   useEffect(() => {
-    const urlSearch = searchParams.get("search") ?? "";
-    if (debouncedSearch !== urlSearch) {
-      const params = new URLSearchParams(searchParams);
-      if (debouncedSearch) {
-        params.set("search", debouncedSearch);
-      } else {
-        params.delete("search");
-      }
+    const params = new URLSearchParams(searchParams);
+    const didChange = Object.entries(debouncedForm).reduce(
+      (acc, [key, value]) => {
+        const existing = params.get(key) ?? "";
+        if (existing !== value) {
+          acc = true;
+          value ? params.set(key, value) : params.delete(key);
+        }
+        return acc;
+      },
+      false
+    );
+
+    if (didChange) {
       router.push(`${pathName}${params ? `?${params}` : ""}`);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch]);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedForm]);
+
+  const onSearchChange = (value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      search: value === "_clear" ? "" : value,
+    }));
+  };
 
   const onBedroomCountChange = (value: string) => {
-    setBedroomCount(value === "_clear" ? "" : value);
+    setForm((prev) => ({
+      ...prev,
+      bedroomCount: value === "_clear" ? "" : value,
+    }));
   };
 
   const onPropertyTypeChange = (value: string) => {
-    setPropertyType(value === "_clear" ? "" : value);
+    setForm((prev) => ({
+      ...prev,
+      propertyType: value === "_clear" ? "" : value,
+    }));
   };
 
   return (
@@ -45,8 +72,8 @@ export function Search() {
       <div className="flex py-3 px-2 gap-8 bg-zinc-100 items-center rounded">
         <IoSearchOutline className="w-6 h-6 text-gray-700" />
         <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={form.search}
+          onChange={(e) => onSearchChange(e.target.value)}
           type="text"
           placeholder="Search by project name"
           className="flex-1 bg-transparent text-gray-800 focus:outline-none placeholder:text-gray-500 placeholder:font-regular"
@@ -54,38 +81,41 @@ export function Search() {
       </div>
       <div className="flex gap-2">
         <Select
-          display={`No. of Bedrooms: ${bedroomCount}`}
+          display={`No. of Bedrooms: ${form.bedroomCount}`}
           placeholder="No. of Bedrooms"
           onValueChange={onBedroomCountChange}
-          value={bedroomCount}
+          value={form.bedroomCount}
         >
-          {bedroomCount !== "" ? (
+          {form.bedroomCount !== "" ? (
             <>
               <SelectItem value="_clear">clear</SelectItem>
               <SelectSeparator />
             </>
           ) : null}
-          {["0", "1", "2", "3", "4"].map((item) => (
+          {bedroomCounts.map(String).map((item) => (
             <SelectItem value={item} key={item}>
               {item}
             </SelectItem>
           ))}
         </Select>
         <Select
-          display={propertyType}
+          display={
+            propertyTypes.find((x) => String(x.id) === form.propertyType)
+              ?.attributes.displayName
+          }
           placeholder="Property Type"
           onValueChange={onPropertyTypeChange}
-          value={propertyType}
+          value={form.propertyType}
         >
-          {propertyType !== "" ? (
+          {form.propertyType !== "" ? (
             <>
               <SelectItem value="_clear">clear</SelectItem>
               <SelectSeparator />
             </>
           ) : null}
-          {["Apartment", "Villa"].map((item) => (
-            <SelectItem value={item} key={item}>
-              {item}
+          {propertyTypes.map((item) => (
+            <SelectItem value={String(item.id)} key={item.id}>
+              {item.attributes.displayName}
             </SelectItem>
           ))}
         </Select>

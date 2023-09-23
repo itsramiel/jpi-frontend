@@ -51,13 +51,7 @@ export type TProperty = {
     features: Array<string>;
     bedroomCount: number;
     property_type: {
-      data: {
-        id: number;
-        attributes: {
-          displayName: string;
-          locale: string;
-        };
-      };
+      data: TPropertyType;
     };
     currency: {
       data: {
@@ -67,5 +61,13 @@ export type TProperty = {
         };
       };
     };
+  };
+};
+
+export type TPropertyType = {
+  id: number;
+  attributes: {
+    displayName: string;
+    locale: string;
   };
 };

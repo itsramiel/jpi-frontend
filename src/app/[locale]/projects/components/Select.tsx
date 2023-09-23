@@ -7,7 +7,7 @@ interface FilterProps {
   children: React.ReactNode;
   onValueChange: (value: string) => void;
   value: string;
-  display: string;
+  display?: string;
 }
 
 export function Select({
