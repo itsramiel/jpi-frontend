@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.0.0-rc.10",
@@ -27,6 +28,7 @@
     "markdown-to-jsx": "^7.3.2",
     "next": "13.5.1",
     "next-intl": "3.0.0-beta.16",
+    "patch-package": "^8.0.0",
     "postcss": "8.4.30",
     "qs": "^6.11.2",
     "react": "18.2.0",
