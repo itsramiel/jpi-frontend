@@ -4,7 +4,9 @@
     "blog": "Blog",
     "contactUs": "Contact Us",
     "close": "close",
-    "errorOccured": "An error occured. Please try again later."
+    "errorOccured": "An error occured. Please try again later.",
+    "companyName": "Jokanda Property Investment",
+    "clear": "clear"
   },
   "homepage": {
     "partneringTitle": "Partnering with the pioneers of Northern Cyprus Construction",
@@ -58,7 +60,12 @@
     "locationOnMap": "Location on Map",
     "startingPrice": "Prices Begin at {price}",
     "downPayment": "Down payment {percentage}% + monthly installments",
-    "fullPaymentDiscount": "Exclusive Discount for Full Payment"
+    "fullPaymentDiscount": "Exclusive Discount for Full Payment",
+    "filters": {
+      "search": "Search by project name",
+      "noOfBedrooms": "No. of Bedrooms",
+      "propertyType": "Property Type"
+    }
   },
   "conatct": {
     "form": {

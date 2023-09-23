@@ -1,5 +1,4 @@
 "use client";
-/*eslint i18next/no-literal-string: 0*/
 
 import { usePathname, useRouter } from "next-intl/client";
 import { useSearchParams } from "next/navigation";
@@ -8,6 +7,8 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useDebounce } from "use-debounce";
 import { Select, SelectItem, SelectSeparator } from "./Select";
 import { TPropertyType } from "../../types";
+import { useLocale, useTranslations } from "next-intl";
+import { formatDecimalNumber } from "@/utils";
 
 interface SearchProps {
   bedroomCounts: Array<number>;
@@ -15,6 +16,9 @@ interface SearchProps {
 }
 
 export function Search({ bedroomCounts, propertyTypes }: SearchProps) {
+  const locale = useLocale();
+  const filters = useTranslations("projects.filters");
+  const labels = useTranslations("labels");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -70,46 +74,54 @@ export function Search({ bedroomCounts, propertyTypes }: SearchProps) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex py-3 px-2 gap-8 bg-zinc-100 items-center rounded">
-        <IoSearchOutline className="w-6 h-6 text-gray-700" />
+        <IoSearchOutline className="w-6 h-6 text-gray-700 mirror" />
         <input
           value={form.search}
           onChange={(e) => onSearchChange(e.target.value)}
           type="text"
-          placeholder="Search by project name"
+          placeholder={filters("search")}
           className="flex-1 bg-transparent text-gray-800 focus:outline-none placeholder:text-gray-500 placeholder:font-regular"
         />
       </div>
       <div className="flex gap-2">
         <Select
-          display={`No. of Bedrooms: ${form.bedroomCount}`}
-          placeholder="No. of Bedrooms"
+          display={`${filters("noOfBedrooms")}: ${
+            form.bedroomCount &&
+            formatDecimalNumber(Number(form.bedroomCount), locale)
+          }`}
+          placeholder={filters("noOfBedrooms")}
           onValueChange={onBedroomCountChange}
           value={form.bedroomCount}
         >
           {form.bedroomCount !== "" ? (
             <>
-              <SelectItem value="_clear">clear</SelectItem>
+              <SelectItem value="_clear">{labels("clear")}</SelectItem>
               <SelectSeparator />
             </>
           ) : null}
-          {bedroomCounts.map(String).map((item) => (
-            <SelectItem value={item} key={item}>
-              {item}
-            </SelectItem>
-          ))}
+          {bedroomCounts
+            .map((bedroomCount) => ({
+              count: formatDecimalNumber(bedroomCount, locale),
+              id: String(bedroomCount),
+            }))
+            .map((item) => (
+              <SelectItem value={item.id} key={item.id}>
+                {item.count}
+              </SelectItem>
+            ))}
         </Select>
         <Select
           display={
             propertyTypes.find((x) => String(x.id) === form.propertyType)
               ?.attributes.displayName
           }
-          placeholder="Property Type"
+          placeholder={filters("propertyType")}
           onValueChange={onPropertyTypeChange}
           value={form.propertyType}
         >
           {form.propertyType !== "" ? (
             <>
-              <SelectItem value="_clear">clear</SelectItem>
+              <SelectItem value="_clear">{labels("clear")}</SelectItem>
               <SelectSeparator />
             </>
           ) : null}

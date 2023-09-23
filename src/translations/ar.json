@@ -4,7 +4,9 @@
     "blog": "مدونة",
     "contactUs": "اتصل بنا",
     "close": "إغلاق",
-    "errorOccured": "حدث خطأ. الرجاء المحاولة مرة أخرى لاحقاً."
+    "errorOccured": "حدث خطأ. الرجاء المحاولة مرة أخرى لاحقاً.",
+    "companyName": "جوكاندا للإستثمار العقاري",
+    "clear": "إلغاء"
   },
   "homepage": {
     "partneringTitle": "الشراكة مع رواد البناء في شمال قبرص",
@@ -58,7 +60,12 @@
     "locationOnMap": "الموقع على الخريطة",
     "startingPrice": "تبدأ الأسعار من {price}",
     "downPayment": "دفعة أولى {percentage}% + أقساط شهرية",
-    "fullPaymentDiscount": "خصم حصري للدفع الكامل"
+    "fullPaymentDiscount": "خصم حصري للدفع الكامل",
+    "filters": {
+      "search": "البحث بواسطة اسم المشروع",
+      "noOfBedrooms": "عدد الغرف",
+      "propertyType": "نوع العقار"
+    }
   },
   "conatct": {
     "form": {

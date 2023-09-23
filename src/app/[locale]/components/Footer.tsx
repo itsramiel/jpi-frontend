@@ -5,13 +5,15 @@ import {
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
-import Link from "next/link";
+import Link from "next-intl/link";
 import classNames from "classnames";
+import { useTranslations } from "next-intl";
 
 interface FooterProps {
   className?: string;
 }
 export function Footer({ className }: FooterProps) {
+  const t = useTranslations("labels");
   return (
     <footer
       className={classNames(
@@ -21,7 +23,7 @@ export function Footer({ className }: FooterProps) {
     >
       <div className="max-w-6xl text-gray-700 text-sm flex-1 flex justify-between">
         <div className="flex flex-col justify-between">
-          <p className="font-semibold">Jokanda Property Investment</p>
+          <p className="font-semibold">{t("companyName")}</p>
           <div className="flex flex-row flex-wrap gap-2">
             <Link href="#">
               <IoLogoInstagram />
@@ -35,9 +37,9 @@ export function Footer({ className }: FooterProps) {
           </div>
         </div>
         <div className="flex flex-col gap-2 [&_a]:text-gray-600 [&_a:hover]:text-gray-800 font-medium">
-          <Link href="#">Projects</Link>
-          <Link href="#">Blog</Link>
-          <Link href="#">Contact us</Link>
+          <Link href="/projects">{t("projects")}</Link>
+          <Link href="/blog">{t("blog")}</Link>
+          <Link href="/contact">{t("contactUs")}</Link>
         </div>
       </div>
     </footer>
