@@ -38,7 +38,9 @@ export default async function RootLayout({
         <html lang={locale} dir={dir}>
           <body className="min-h-screen flex flex-col">
             <Navbar />
-            <div className="w-full max-w-6xl mx-auto px-4">{children}</div>
+            <div className="w-full max-w-6xl mx-auto px-4 pt-16">
+              {children}
+            </div>
             <Footer className="mt-auto" />
           </body>
         </html>

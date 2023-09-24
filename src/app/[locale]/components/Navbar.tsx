@@ -7,7 +7,7 @@ export const Navbar = () => {
   const t = useTranslations("labels");
 
   return (
-    <div className="p-4 border-b border-b-black/10">
+    <div className="fixed left-0 right-0 top-0 backdrop-blur-lg p-4 border-b border-b-black/10 z-10">
       <div className="max-w-6xl mx-auto flex justify-between">
         <div className="flex flex-row gap-9 items-center">
           <Link href={"/"} className="cursor-pointer flex-shrink-0">
