@@ -20,7 +20,7 @@ export function LanguageControl() {
   };
 
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button
           aria-label="change language"
@@ -34,7 +34,7 @@ export function LanguageControl() {
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="bg-white rounded p-2 shadow-[0_0_8px_rgba(0,0,0,0.3)]">
+        <DropdownMenu.Content className="relative z-10 bg-white rounded p-2 shadow-[0_0_8px_rgba(0,0,0,0.3)]">
           <DropdownMenu.RadioGroup
             value={locale}
             onValueChange={onLocaleChange}
