@@ -10,8 +10,14 @@ export const Navbar = () => {
     <div className="p-4 border-b border-b-black/10">
       <div className="max-w-6xl mx-auto flex justify-between">
         <div className="flex flex-row gap-9 items-center">
-          <Link href={"/"} className="cursor-pointer">
-            <Image src={"/Logo.png"} alt="logo" width={31.18} height={20} />
+          <Link href={"/"} className="cursor-pointer flex-shrink-0">
+            <Image
+              src={"/Logo.png"}
+              alt="logo"
+              width={31.18}
+              height={20}
+              className="w-[1.94875rem] h-[1.25rem]"
+            />
           </Link>
           <div className={"flex flex-row gap-9 text-gray-700 font-medium"}>
             <Link href={"/projects"} className="cursor-pointer">
