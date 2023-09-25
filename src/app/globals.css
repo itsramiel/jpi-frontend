@@ -10,6 +10,10 @@
   --text-x-direction: -1;
 }
 
+:root {
+  --navbar-height: 3.5625rem;
+}
+
 @layer utilities {
   .mirror {
     transform: scaleX(var(--text-x-direction));
