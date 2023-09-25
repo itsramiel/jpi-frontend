@@ -27,6 +27,18 @@ export const Navbar = () => {
     document.querySelector("body")?.classList.toggle("overflow-hidden", isOpen);
   }, [isOpen]);
 
+  useEffect(() => {
+    const closeNavbar = () => setIsOpen(false);
+
+    window.addEventListener("orientationchange", closeNavbar);
+    window.addEventListener("resize", closeNavbar);
+
+    return () => {
+      window.removeEventListener("orientationchange", closeNavbar);
+      window.removeEventListener("resize", closeNavbar);
+    };
+  }, []);
+
   return (
     <div className="fixed left-0 right-0 top-0 backdrop-blur-lg h-[--navbar-height] px-4 border-b border-b-black/10 z-10">
       <div className="h-full max-w-6xl mx-auto flex justify-between">
