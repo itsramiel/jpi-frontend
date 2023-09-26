@@ -1,13 +1,11 @@
-/*eslint i18next/no-literal-string: 0*/
-
 import {
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
-import Link from "next-intl/link";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
+import { Link } from "@/components";
 
 interface FooterProps {
   className?: string;
@@ -25,15 +23,15 @@ export function Footer({ className }: FooterProps) {
         <div className="flex flex-col justify-between">
           <p className="font-semibold">{t("companyName")}</p>
           <div className="flex flex-row flex-wrap gap-2">
-            <Link href="#">
+            <a href="#">
               <IoLogoInstagram />
-            </Link>
-            <Link href="#">
+            </a>
+            <a href="#">
               <IoLogoFacebook />
-            </Link>
-            <Link href="#">
+            </a>
+            <a href="#">
               <IoLogoLinkedin />
-            </Link>
+            </a>
           </div>
         </div>
         <div className="flex flex-col gap-2 [&_a]:text-gray-600 [&_a:hover]:text-gray-800 font-medium">

@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next-intl/link";
 import { useTranslations } from "next-intl";
 import type {} from "next-intl";
-import { LanguageControl } from "./Navbar/components";
+import { LanguageControl, NprogressController } from "./Navbar/components";
 import { IoClose, IoMenu } from "react-icons/io5";
 import classNames from "classnames";
 import { CSSProperties, useEffect, useState } from "react";
+import { Link } from "@/components";
+import nProgress from "nprogress";
+
+nProgress.configure({ showSpinner: false });
 
 const LINKS = [
   { key: "projects", route: "/projects" },
@@ -118,6 +121,7 @@ export const Navbar = () => {
           </button>
         </div>
       </div>
+      <NprogressController />
     </div>
   );
 };

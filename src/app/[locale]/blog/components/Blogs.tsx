@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
+import { useRouter } from "@/hooks";
 import { formatDate } from "@/utils";
 
 import { TBlogsResponse } from "../types";

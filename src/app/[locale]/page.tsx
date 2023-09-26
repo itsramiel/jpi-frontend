@@ -7,11 +7,10 @@ import {
 } from "react-icons/io5";
 import qs from "qs";
 import Image from "next/image";
-import Link from "next-intl/link";
 import { IconType } from "react-icons";
 import { useTranslations } from "next-intl";
 
-import { Button } from "@/components";
+import { Button, Link } from "@/components";
 import { BasePageProps } from "@/types";
 
 import { TProject } from "./types";

@@ -1,8 +1,9 @@
 "use client";
+import { useRouter } from "@/hooks";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import classNames from "classnames";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next-intl/client";
+import { usePathname } from "next-intl/client";
 import { IoCheckmark, IoChevronDown, IoLanguage } from "react-icons/io5";
 
 const languages = [

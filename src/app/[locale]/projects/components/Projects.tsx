@@ -1,7 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRouter } from "next-intl/client";
+
+import { useRouter } from "@/hooks";
+
 import { ImageCarousel } from "./ImageCarousel";
 import { TProject, TProperty } from "../../types";
 

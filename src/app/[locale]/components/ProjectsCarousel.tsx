@@ -1,10 +1,9 @@
-/*eslint i18next/no-literal-string: 0*/
-
 "use client";
 import Image from "next/image";
 import { useCallback } from "react";
 import classNames from "classnames";
-import { useRouter } from "next-intl/client";
+
+import { useRouter } from "@/hooks";
 
 import { ReusableCarousel, TCarouselRenderItem } from "./ReusableCarousel";
 import { TProject } from "../types";
