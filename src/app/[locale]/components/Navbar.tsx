@@ -1,16 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type {} from "next-intl";
 import { LanguageControl, NprogressController } from "./Navbar/components";
 import { IoClose, IoMenu } from "react-icons/io5";
 import classNames from "classnames";
 import { CSSProperties, useEffect, useState } from "react";
 import { Link } from "@/components";
-import nProgress from "nprogress";
-
-nProgress.configure({ showSpinner: false });
+import nProgress from "nprogress-support-rtl";
 
 const LINKS = [
   { key: "projects", route: "/projects" },
@@ -23,6 +21,7 @@ const LINK_DURATION = 100;
 const TOTAL_ANIMATION = 100 + LINKS.length * 100;
 
 export const Navbar = () => {
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("labels");
 
@@ -41,6 +40,14 @@ export const Navbar = () => {
       window.removeEventListener("resize", closeNavbar);
     };
   }, []);
+
+  useEffect(() => {
+    nProgress.configure({
+      showSpinner: false,
+      //@ts-ignore
+      rtl: document.dir === "rtl",
+    });
+  }, [locale]);
 
   return (
     <div className="fixed left-0 right-0 top-0 backdrop-blur-lg h-[--navbar-height] px-4 border-b border-b-black/10 z-10">

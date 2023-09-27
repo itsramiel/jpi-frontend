@@ -1,6 +1,6 @@
 "use client";
 
-import NProgress from "nprogress";
+import NProgress from "nprogress-support-rtl";
 import { ComponentProps } from "react";
 import NextIntlLink from "next-intl/link";
 import { isCurrentHref } from "@/utils";

@@ -1,4 +1,4 @@
-@import "nprogress/nprogress.css";
+@import "@/styles/nprogressBar.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

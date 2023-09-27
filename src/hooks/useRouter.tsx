@@ -1,6 +1,6 @@
 import { isCurrentHref } from "@/utils";
 import { useRouter as useNextIntlRouter } from "next-intl/client";
-import nProgress from "nprogress";
+import nProgress from "nprogress-support-rtl";
 import { useMemo } from "react";
 export function useRouter(): ReturnType<typeof useNextIntlRouter> {
   const nextIntlRouter = useNextIntlRouter();
