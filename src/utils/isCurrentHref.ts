@@ -1,8 +1,13 @@
-export function isCurrentHref(href: string) {
+export function isCurrentHref({
+  currentPath,
+  currentSearch,
+  href,
+}: {
+  currentPath: string;
+  currentSearch: string;
+  href: string;
+}) {
   const path = href.split("?")[0];
   const search = href.split("?")[1] ?? "";
-  return (
-    window.location.pathname === path &&
-    window.location.search.replace("?", "") === search
-  );
+  return currentPath === path && currentSearch === search;
 }

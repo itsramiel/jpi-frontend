@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "nprogress-support-rtl": ["node_modules/@types/nprogress"]
+      "nprogress-support-rtl": ["./node_modules/@types/nprogress"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
