@@ -3,7 +3,6 @@ import { useRouter } from "@/hooks";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import classNames from "classnames";
 import { useLocale } from "next-intl";
-import { usePathname } from "next-intl/client";
 import { IoCheckmark, IoChevronDown, IoLanguage } from "react-icons/io5";
 
 const languages = [
@@ -14,10 +13,9 @@ const languages = [
 export function LanguageControl() {
   const locale = useLocale();
   const router = useRouter();
-  const pathname = usePathname();
 
   const onLocaleChange = (locale: string) => {
-    router.push(pathname, { locale });
+    router.push("/", { locale });
   };
 
   return (
