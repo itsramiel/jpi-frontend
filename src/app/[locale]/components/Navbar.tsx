@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import type {} from "next-intl";
 import { LanguageControl, NprogressController } from "./Navbar/components";
 import { IoClose, IoMenu } from "react-icons/io5";
 import classNames from "classnames";
@@ -94,6 +93,7 @@ export const Navbar = () => {
             >
               {LINKS.map((link, index) => (
                 <Link
+                  onClick={() => setIsOpen(false)}
                   key={link.key}
                   href={link.route}
                   style={

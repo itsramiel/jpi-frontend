@@ -6,13 +6,14 @@ import { useRouter } from "@/hooks";
 
 import { ImageCarousel } from "./ImageCarousel";
 import { TProject, TProperty } from "../../types";
+import { IoCheckmark, IoHammer } from "react-icons/io5";
 
 interface ProjectsProps {
   projects: TProject[];
 }
 export const Projects = ({ projects }: ProjectsProps) => {
   const router = useRouter();
-  const t = useTranslations("projects.labels");
+  const t = useTranslations("projects");
   return projects.map(({ id, attributes }) => {
     const propertyTypes = Array.from(
       new Set(
@@ -69,14 +70,22 @@ export const Projects = ({ projects }: ProjectsProps) => {
               {distancePhrase}
             </p>
           </div>
-          <p className="text-gray-800 text-sm font-bold">
-            {Intl.NumberFormat(attributes.locale, {
-              style: "currency",
-              currency:
-                cheapestProperty.attributes.currency.data.attributes.code,
-              maximumFractionDigits: 0,
-            }).format(cheapestProperty.attributes.price)}
-          </p>
+          <div>
+            <p className="text-gray-800 text-sm font-bold text-end">
+              {Intl.NumberFormat(attributes.locale, {
+                style: "currency",
+                currency:
+                  cheapestProperty.attributes.currency.data.attributes.code,
+                maximumFractionDigits: 0,
+              }).format(cheapestProperty.attributes.price)}
+            </p>
+            <div className="flex items-center gap-1 [&_svg]:text-gray-700 [&_svg]:mirror">
+              {attributes.underConstruction ? <IoHammer /> : <IoCheckmark />}
+              <span className="text-gray-600">
+                {t(attributes.underConstruction ? "uncompleted" : "completed")}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     );

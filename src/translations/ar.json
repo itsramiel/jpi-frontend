@@ -49,10 +49,8 @@
   "projects": {
     "title": "المشاريع",
     "description": "تصفح قائمتنا المنتقاة بعناية من العقارات التي تتناسب مع أسلوب حياتك الفخم",
-    "labels": {
-      "aboutProject": "عن {projectName}:",
-      "distancePhrase": "{distance} بعيد عن {place}"
-    },
+    "aboutProject": "عن {projectName}:",
+    "distancePhrase": "{distance} بعيد عن {place}",
     "onSiteAmenities": "وسائل الراحة في الموقع",
     "nearbyPOI": "نقاط الاهتمام القريبة",
     "propertyTypes": "اختر نوع العقار الخاص بك",
@@ -65,7 +63,9 @@
       "search": "البحث بواسطة اسم المشروع",
       "noOfBedrooms": "عدد الغرف",
       "propertyType": "نوع العقار"
-    }
+    },
+    "completed": "مكتمل",
+    "uncompleted": "غير مكتمل"
   },
   "conatct": {
     "form": {

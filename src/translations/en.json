@@ -49,10 +49,8 @@
   "projects": {
     "title": "Projects",
     "description": "Browse our carefully curated list of properties that match your luxurious lifestyle",
-    "labels": {
-      "aboutProject": "About {projectName}:",
-      "distancePhrase": "{distance} away from {place}"
-    },
+    "aboutProject": "About {projectName}:",
+    "distancePhrase": "{distance} away from {place}",
     "onSiteAmenities": "On-Site Amenities",
     "nearbyPOI": "Nearby Points of Interests",
     "propertyTypes": "Choose Your Property Type",
@@ -65,7 +63,9 @@
       "search": "Search by project name",
       "noOfBedrooms": "No. of Bedrooms",
       "propertyType": "Property Type"
-    }
+    },
+    "completed": "finished",
+    "uncompleted": "unfinished"
   },
   "conatct": {
     "form": {
