@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   description: "Homepage of Jokanda Property Investment",
 };
 
-export async function generateStaticParams() {
-  const locales = ["en", "ar"];
+const locales = ["en", "ar"];
 
+export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
@@ -31,11 +31,9 @@ export default async function RootLayout({
 } & LocaleSegmentProps) {
   let messages: AbstractIntlMessages | undefined;
 
-  try {
-    messages = (await import(`../../translations/${locale}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+  // Validate that the incoming `locale` parameter is valid
+  const isValidLocale = locales.some((cur) => cur === locale);
+  if (!isValidLocale) notFound();
 
   const dir = locale === "en" ? "ltr" : "rtl";
 
