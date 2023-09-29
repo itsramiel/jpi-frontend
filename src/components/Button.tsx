@@ -1,7 +1,8 @@
 import { Ring } from "@uiball/loaders";
 import { IconType } from "react-icons";
-import { ButtonHTMLAttributes } from "react";
+import { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { VariantProps, cva } from "class-variance-authority";
+import { Link } from ".";
 
 const button = cva(
   "font-medium text-gray-50 rounded flex items-center justify-center gap-4",
@@ -23,12 +24,19 @@ const button = cva(
   }
 );
 
-interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof button> {
+interface BaseButtonProps extends VariantProps<typeof button> {
   trailingIcon?: IconType;
   children: string;
 }
+
+interface ButtonAsButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  href?: never;
+}
+interface ButtonAsLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+}
+
+type ButtonProps = BaseButtonProps & (ButtonAsLinkProps | ButtonAsButtonProps);
 
 export const Button = ({
   size,
@@ -38,10 +46,19 @@ export const Button = ({
   trailingIcon: TrailingIcon,
   ...props
 }: ButtonProps) => {
+  if (props.href !== undefined) {
+    return (
+      <Link className={button({ size, loading, className })} {...props}>
+        {loading ? <Ring color="white" size={24} /> : children}
+        {TrailingIcon ? <TrailingIcon className="mirror" /> : null}
+      </Link>
+    );
+  }
+
   return (
     <button
       disabled={loading ?? undefined}
-      className={button({ size, loading })}
+      className={button({ size, loading, className })}
       {...props}
     >
       {loading ? <Ring color="white" size={24} /> : children}
