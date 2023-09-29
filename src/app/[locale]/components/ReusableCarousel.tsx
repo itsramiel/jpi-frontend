@@ -2,6 +2,7 @@ import { useLocale } from "next-intl";
 import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
+import classNames from "classnames";
 
 export type TCarouselRenderItem<T> = (
   info: TCarouselRenderItemInfo<T>
@@ -16,11 +17,13 @@ interface ReusableCarouselProps<T> {
   data: T[];
   renderItem: TCarouselRenderItem<T>;
   keyExtractor: (item: T, index: number) => string;
+  className?: string;
 }
 export function ReusableCarousel<T>({
   data,
   renderItem,
   keyExtractor,
+  className,
 }: ReusableCarouselProps<T>) {
   const locale = useLocale();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -47,7 +50,7 @@ export function ReusableCarousel<T>({
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="md:flex-1 flex flex-col gap-2">
+    <div className={classNames("md:flex-1 flex flex-col gap-2", className)}>
       {/* Carousel */}
       <div ref={emblaRef} className="overflow-hidden aspect-[3/2] rounded">
         <div className="flex h-full">

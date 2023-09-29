@@ -72,14 +72,13 @@ export function ExploreCountry() {
             {t("discoverDescription")}
           </p>
         </div>
-        <div
+        <DiscoverCarousel
           className={classNames(
             "transition-[transform,opacity] duration-1000 delay-[750ms]",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
-        >
-          <DiscoverCarousel images={images} />
-        </div>
+          images={images}
+        />
       </div>
       <Seperator
         className={classNames(
@@ -93,9 +92,10 @@ export function ExploreCountry() {
 
 interface DiscoverCarouselProps {
   images: Array<{ name: string; alt: string }>;
+  className?: string;
 }
 
-export function DiscoverCarousel({ images }: DiscoverCarouselProps) {
+export function DiscoverCarousel({ images, className }: DiscoverCarouselProps) {
   const renderItem: TCarouselRenderItem<
     DiscoverCarouselProps["images"][number]
   > = useCallback(
@@ -114,6 +114,7 @@ export function DiscoverCarousel({ images }: DiscoverCarouselProps) {
   );
   return (
     <ReusableCarousel
+      className={className}
       data={images}
       keyExtractor={(_, index) => String(index)}
       renderItem={renderItem}

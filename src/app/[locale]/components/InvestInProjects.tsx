@@ -58,14 +58,13 @@ export function InvestInProjects({ data }: InvestInProjectsProps) {
             </Button>
           </Link>
         </div>
-        <div
+        <ProjectsCarousel
           className={classNames(
             "transition-[transform,opacity] delay-1000 duration-1000",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
-        >
-          <ProjectsCarousel data={data} />
-        </div>
+          data={data}
+        />
       </div>
       <Seperator
         className={classNames(
@@ -77,7 +76,10 @@ export function InvestInProjects({ data }: InvestInProjectsProps) {
   );
 }
 
-export function ProjectsCarousel({ data }: InvestInProjectsProps) {
+export function ProjectsCarousel({
+  data,
+  className,
+}: InvestInProjectsProps & { className?: string }) {
   const router = useRouter();
 
   const renderItem: TCarouselRenderItem<InvestInProjectsProps["data"][number]> =
@@ -125,6 +127,7 @@ export function ProjectsCarousel({ data }: InvestInProjectsProps) {
 
   return (
     <ReusableCarousel
+      className={className}
       data={data}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
