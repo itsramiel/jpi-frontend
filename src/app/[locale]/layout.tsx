@@ -17,8 +17,6 @@ export const metadata: Metadata = {
   description: "Homepage of Jokanda Property Investment",
 };
 
-const locales = ["en", "ar"];
-
 export default async function RootLayout({
   children,
   params: { locale },
@@ -27,9 +25,11 @@ export default async function RootLayout({
 } & LocaleSegmentProps) {
   let messages: AbstractIntlMessages | undefined;
 
-  // Validate that the incoming `locale` parameter is valid
-  const isValidLocale = locales.some((cur) => cur === locale);
-  if (!isValidLocale) notFound();
+  try {
+    messages = (await import(`../../translations/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
 
   const dir = locale === "en" ? "ltr" : "rtl";
 
