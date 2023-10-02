@@ -74,7 +74,7 @@ export function ExploreCountry() {
         </div>
         <DiscoverCarousel
           className={classNames(
-            "transition-[transform,opacity] duration-1000 delay-[750ms]",
+            "self-stretch transition-[transform,opacity] duration-1000 delay-[750ms]",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
           images={images}
@@ -100,15 +100,13 @@ export function DiscoverCarousel({ images, className }: DiscoverCarouselProps) {
     DiscoverCarouselProps["images"][number]
   > = useCallback(
     ({ item: image }) => (
-      <div className="h-full w-full">
-        <Image
-          width={600}
-          height={600}
-          src={image.name}
-          alt={image.alt}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      <Image
+        src={image.name}
+        fill
+        alt={image.alt}
+        quality={100}
+        className="object-cover"
+      />
     ),
     []
   );

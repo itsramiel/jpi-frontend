@@ -60,7 +60,7 @@ export function InvestInProjects({ data }: InvestInProjectsProps) {
         </div>
         <ProjectsCarousel
           className={classNames(
-            "transition-[transform,opacity] delay-1000 duration-1000",
+            "self-stretch transition-[transform,opacity] delay-1000 duration-1000",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
           data={data}
@@ -90,11 +90,11 @@ export function ProjectsCarousel({
           onClick={() => router.push(`/projects/${item.id}`)}
         >
           <Image
-            width={600}
-            height={600}
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`}
             alt={`${item.attributes.name}, ${item.attributes.city}`}
-            className="w-full h-full object-cover"
+            fill
+            quality={100}
+            className="object-cover"
           />
           <div
             className={classNames(

@@ -50,12 +50,20 @@ export function ReusableCarousel<T>({
   }, [emblaApi, onSelect]);
 
   return (
-    <div className={classNames("md:flex-1 flex flex-col gap-2", className)}>
+    <div
+      className={classNames(
+        "md:flex-1 flex flex-col gap-2 aspect-[3/2]",
+        className
+      )}
+    >
       {/* Carousel */}
-      <div ref={emblaRef} className="overflow-hidden aspect-[3/2] rounded">
+      <div ref={emblaRef} className="overflow-hidden rounded h-full">
         <div className="flex h-full">
           {data.map((item, index) => (
-            <div className="flex-[0_0_100%]" key={keyExtractor(item, index)}>
+            <div
+              className="flex-[0_0_100%] relative"
+              key={keyExtractor(item, index)}
+            >
               {renderItem({ item, index, activeIndex })}
             </div>
           ))}

@@ -44,13 +44,13 @@ export default async function Page({
           </p>
         </div>
       </div>
-      <div className="h-44 min-[440px]:h-52 min-[540px]:h-60">
+      <div className="aspect-video relative rounded overflow-hidden">
         <Image
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}${blog.imageThumbnail.data.attributes.url}`}
           alt="blog image"
-          width={300}
-          height={176}
-          className="h-full w-full object-cover"
+          className="object-cover"
+          fill
+          quality={100}
         />
       </div>
       <article className="prose">

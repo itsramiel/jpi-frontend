@@ -74,16 +74,16 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
 
   return (
     <div className="group aspect-[3/2] relative">
-      <div ref={emblaRef} className="overflow-hidden h-full">
+      <div ref={emblaRef} className="overflow-hidden rounded h-full">
         <div className="flex h-full">
           {images.map((image, index) => (
-            <div key={index} className="flex-[0_0_100%] bg-blue-500">
+            <div key={index} className="flex-[0_0_100%] relative">
               <Image
                 src={image}
                 alt="project image"
-                width={358}
-                height={240}
-                className="w-full h-full object-cover rounded"
+                className="object-cover"
+                fill
+                quality={100}
               />
             </div>
           ))}
