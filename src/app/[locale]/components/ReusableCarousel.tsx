@@ -52,12 +52,12 @@ export function ReusableCarousel<T>({
   return (
     <div
       className={classNames(
-        "md:flex-1 flex flex-col gap-2 aspect-[3/2]",
+        "md:flex-1 flex flex-col gap-2 aspect-[3/2] overflow-hidden",
         className
       )}
     >
       {/* Carousel */}
-      <div ref={emblaRef} className="overflow-hidden rounded h-full">
+      <div ref={emblaRef} className="flex-1 rounded overflow-hidden">
         <div className="flex h-full">
           {data.map((item, index) => (
             <div
