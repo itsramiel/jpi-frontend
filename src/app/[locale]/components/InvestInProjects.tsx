@@ -105,7 +105,7 @@ export function ProjectsCarousel({
           >
             <p
               className={classNames(
-                "text-white text-4xl",
+                "text-white text-4xl text-center",
                 "transition-[transform,opacity] ease-in-out delay-[1400ms] duration-300",
                 index === activeIndex
                   ? "translate-y-0 opacity-100"
