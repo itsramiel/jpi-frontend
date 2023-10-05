@@ -1,3 +1,4 @@
+import Markdown from "markdown-to-jsx";
 import { IoLocationOutline, IoMapOutline, IoPinOutline } from "react-icons/io5";
 import { TbMoneybag } from "react-icons/tb";
 import { useLocale, useTranslations } from "next-intl";
@@ -39,9 +40,7 @@ export const Project = ({ project }: ProjectProps) => {
           "aboutProject",
           { projectName: project.attributes.name }
         )}`}</p>
-        <p className="text-gray-700 text-base font-medium">
-          {project.attributes.description}
-        </p>
+        <Markdown className="prose">{project.attributes.description}</Markdown>
       </div>
       <div className=" my-4 border-[1px] border-gray-400"></div>
       <div className="flex flex-col lg:flex-row lg:items-start gap-8 relative">
