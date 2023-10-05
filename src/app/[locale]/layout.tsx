@@ -1,7 +1,7 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Noto_Naskh_Arabic } from "@next/font/google";
+import { Noto_Naskh_Arabic } from "next/font/google";
 
 import { LocaleSegmentProps } from "./types";
 import { DirectionProvider, Footer, Navbar } from "./components";
