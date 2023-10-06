@@ -56,6 +56,7 @@
     "propertyTypes": "اختر نوع العقار الخاص بك",
     "pricing": "التسعير وخيارات الدفع",
     "locationOnMap": "الموقع على الخريطة",
+    "bedroomCount": "عدد الغرف النوم: {bedroomCount}",
     "startingPrice": "تبدأ الأسعار من {price}",
     "downPayment": "دفعة أولى {percentage}% + أقساط شهرية",
     "fullPaymentDiscount": "خصم حصري للدفع الكامل",

@@ -2,10 +2,11 @@
 
 import { IoHomeOutline } from "react-icons/io5";
 import { SectionHeader } from "./SectionHeader";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import { SectionItems } from "./SectionItems";
 import { TProject } from "@/app/[locale]/types";
+import { formatCurrency, formatNumber } from "@/utils";
 
 interface PropertyTypesViewProps {
   propertyTypes: TProject["attributes"]["properties"];
@@ -14,7 +15,32 @@ export const PropertyTypesView = ({
   propertyTypes,
 }: PropertyTypesViewProps) => {
   const t = useTranslations("projects");
+  const locale = useLocale();
   const [activePropertyIndex, setActivePropertyIndex] = useState(0);
+
+  const bulletPoints = [
+    formatCurrency({
+      value: propertyTypes.data[activePropertyIndex].attributes.price,
+      currency:
+        propertyTypes.data[activePropertyIndex].attributes.currency.data
+          .attributes.code,
+      locale,
+    }),
+    ...propertyTypes.data[activePropertyIndex].attributes.features,
+  ];
+
+  if (propertyTypes.data[activePropertyIndex].attributes.bedroomCount) {
+    bulletPoints.unshift(
+      t("bedroomCount", {
+        bedroomCount: formatNumber({
+          value:
+            propertyTypes.data[activePropertyIndex].attributes.bedroomCount,
+          locale,
+        }),
+      })
+    );
+  }
+
   return (
     <div className="flex flex-col gap-3">
       <SectionHeader Icon={IoHomeOutline} title={t("propertyTypes")} />
@@ -24,9 +50,7 @@ export const PropertyTypesView = ({
           propertyTypes={propertyTypes}
           onPropertyClick={(index) => setActivePropertyIndex(index)}
         />
-        <SectionItems
-          items={propertyTypes.data[activePropertyIndex].attributes.features}
-        />
+        <SectionItems items={bulletPoints} />
       </div>
     </div>
   );

@@ -56,6 +56,7 @@
     "propertyTypes": "Choose Your Property Type",
     "pricing": "Pricing & Payment Options",
     "locationOnMap": "Location on Map",
+    "bedroomCount": "number of bedrooms: {bedroomCount}",
     "startingPrice": "Prices Begin at {price}",
     "downPayment": "Down payment {percentage}% + monthly installments",
     "fullPaymentDiscount": "Exclusive Discount for Full Payment",
