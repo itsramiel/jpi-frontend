@@ -148,8 +148,8 @@ function CarouselButton({ position, onPress, disabled }: CarouselButtonProps) {
       disabled={disabled}
       className={`absolute w-8 h-8 rounded-full bg-white top-2/4 translate-y-4 ${
         position === "left" ? "start-2" : "end-2"
-      } flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity opacity-0 ${
-        disabled ? "group-hover:opacity-70" : "group-hover:opacity-100"
+      } flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity ${
+        disabled ? "opacity-70" : "opacity-100"
       } mirror`}
       onClick={onPress}
     >
