@@ -53,14 +53,6 @@ export type TProperty = {
     property_type: {
       data: TPropertyType;
     };
-    currency: {
-      data: {
-        id: number;
-        attributes: {
-          code: string;
-        };
-      };
-    };
   };
 };
 

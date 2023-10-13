@@ -40,7 +40,6 @@ export default async function Page({
       properties: {
         populate: {
           property_type: true,
-          currency: true,
         },
       },
     },

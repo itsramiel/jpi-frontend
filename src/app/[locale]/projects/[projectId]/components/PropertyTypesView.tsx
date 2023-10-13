@@ -21,9 +21,6 @@ export const PropertyTypesView = ({
   const bulletPoints = [
     formatCurrency({
       value: propertyTypes.data[activePropertyIndex].attributes.price,
-      currency:
-        propertyTypes.data[activePropertyIndex].attributes.currency.data
-          .attributes.code,
       locale,
     }),
     ...propertyTypes.data[activePropertyIndex].attributes.features,
