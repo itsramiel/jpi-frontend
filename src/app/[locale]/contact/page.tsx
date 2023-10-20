@@ -29,8 +29,8 @@ export default function Contact() {
         </div>
         <ul className="flex flex-col gap-1">
           {[
-            { icon: IoCallSharp, text: "+905338811865" },
-            { icon: IoMailSharp, text: "coolGuy@yolked.com" },
+            { icon: IoCallSharp, text: "+905428594054" },
+            { icon: IoMailSharp, text: "contact@jokanda.com" },
           ].map((item) => (
             <li key={item.text} className="flex items-center gap-3">
               <item.icon
