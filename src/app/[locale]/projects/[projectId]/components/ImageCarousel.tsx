@@ -22,6 +22,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
+      loop: true,
       direction: locale === "en" ? "ltr" : "rtl",
     },
     [Autoplay({ stopOnInteraction: true })]
