@@ -93,6 +93,7 @@ export function ProjectsCarousel({
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`}
             alt={`${item.attributes.name}, ${item.attributes.city}`}
             fill
+            sizes="50vw"
             quality={100}
             className="object-cover"
           />

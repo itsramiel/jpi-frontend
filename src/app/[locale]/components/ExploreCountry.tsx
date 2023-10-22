@@ -103,6 +103,7 @@ export function DiscoverCarousel({ images, className }: DiscoverCarouselProps) {
       <Image
         src={image.name}
         fill
+        sizes="50vw"
         alt={image.alt}
         quality={100}
         className="object-cover"
