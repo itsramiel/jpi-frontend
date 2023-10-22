@@ -83,6 +83,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
                 alt="project image"
                 className="object-cover"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                 quality={100}
               />
             </div>
