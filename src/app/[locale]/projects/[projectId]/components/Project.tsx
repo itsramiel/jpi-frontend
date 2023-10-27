@@ -44,7 +44,7 @@ export const Project = ({ project }: ProjectProps) => {
       </div>
       <div className=" my-4 border-[1px] border-gray-400"></div>
       <div className="flex flex-col lg:flex-row lg:items-start gap-8 relative">
-        <div className="flex flex-col gap-4 flex-[2_2_0%]">
+        <div className="flex flex-col gap-4 flex-[2_2_0%] min-w-0">
           <div className="flex flex-col gap-3">
             <SectionHeader Icon={IoPinOutline} title={t("onSiteAmenities")} />
             <SectionItems
