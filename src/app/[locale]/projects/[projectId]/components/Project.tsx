@@ -95,7 +95,7 @@ export const Project = ({ project }: ProjectProps) => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2 lg:items-center sticky top-4">
+        <div className="flex flex-col gap-2 lg:items-center sticky top-[calc(var(--navbar-height)+1rem)]">
           <p className="text-gray-950 text-3xl font-semibold">
             {tContact("title")}
           </p>
