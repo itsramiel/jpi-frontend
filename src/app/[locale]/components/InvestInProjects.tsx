@@ -7,12 +7,11 @@ import { useTranslations } from "next-intl";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import { useInView } from "react-intersection-observer";
 
-import { useRouter } from "@/hooks";
 import { Button, Link } from "@/components";
 
 import { TProject } from "../types";
-import { ReusableCarousel, TCarouselRenderItem } from "./ReusableCarousel";
 import { Seperator } from "./Seperator";
+import { ReusableCarousel, TCarouselRenderItem } from "./ReusableCarousel";
 
 interface InvestInProjectsProps {
   data: Array<TProject>;
@@ -80,14 +79,12 @@ export function ProjectsCarousel({
   data,
   className,
 }: InvestInProjectsProps & { className?: string }) {
-  const router = useRouter();
-
   const renderItem: TCarouselRenderItem<InvestInProjectsProps["data"][number]> =
     useCallback(
       ({ item, activeIndex, index }) => (
-        <div
-          className="h-full w-full relative cursor-pointer"
-          onClick={() => router.push(`/projects/${item.id}`)}
+        <Link
+          className="block h-full w-full relative cursor-pointer"
+          href={`/projects/${item.id}`}
         >
           <Image
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`}
@@ -116,9 +113,9 @@ export function ProjectsCarousel({
               {item.attributes.name}
             </p>
           </div>
-        </div>
+        </Link>
       ),
-      [router]
+      []
     );
 
   const keyExtractor = useCallback(

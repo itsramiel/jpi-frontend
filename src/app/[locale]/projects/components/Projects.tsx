@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { IoCheckmark, IoHammer } from "react-icons/io5";
 
-import { useRouter } from "@/hooks";
+import { Link } from "@/components";
 import { formatCurrency } from "@/utils";
 
 import { ImageCarousel } from "./ImageCarousel";
@@ -13,7 +13,6 @@ interface ProjectsProps {
   projects: TProject[];
 }
 export const Projects = ({ projects }: ProjectsProps) => {
-  const router = useRouter();
   const t = useTranslations("projects");
   return projects.map(({ id, attributes }) => {
     const propertyTypes = Array.from(
@@ -41,10 +40,10 @@ export const Projects = ({ projects }: ProjectsProps) => {
       place: firstNearbyPOI.name,
     });
     return (
-      <div
+      <Link
         className="flex flex-col gap-1 p-3 rounded transition duration-300 border-2 border-white hover:border-yellow-500 hover:-translate-y-2 cursor-pointer"
         key={id}
-        onClick={() => router.push(`/projects/${id}`)}
+        href={`/projects/${id}`}
       >
         <ImageCarousel
           images={attributes.images.data.map(
@@ -86,7 +85,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     );
   });
 };
