@@ -43,7 +43,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
       <Link
         className="flex flex-col gap-1 p-3 rounded transition duration-300 border-2 border-white hover:border-yellow-500 hover:-translate-y-2 cursor-pointer"
         key={id}
-        href={`/projects/${id}`}
+        href={`/projects/${attributes.slug}`}
       >
         <ImageCarousel
           images={attributes.images.data.map(

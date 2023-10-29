@@ -6,18 +6,24 @@ import { formatDate } from "@/utils";
 import { BasePageProps } from "@/types";
 
 import { TBlogResponse } from "./types";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: {
-    blogId: string;
+    slug: string;
   };
 }
 
 export default async function Page({
-  params: { blogId, locale },
+  params: { slug, locale },
 }: PageProps & BasePageProps) {
   const query = qs.stringify(
     {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
       fields: ["title", "publishedAt", "content", "locale"],
       populate: ["author", "imageThumbnail"],
       locale,
@@ -26,12 +32,13 @@ export default async function Page({
   );
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${blogId}?${query}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs?${query}`,
     { cache: "no-store" }
   );
 
   const { data } = (await response.json()) as TBlogResponse;
-  const blog = data.attributes;
+  if (data.length !== 1) notFound();
+  const blog = data[0].attributes;
   const author = blog.author.data.attributes;
   return (
     <div className="my-8 mx-auto max-w-2xl">

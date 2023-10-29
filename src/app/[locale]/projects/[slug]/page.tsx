@@ -2,18 +2,24 @@ import qs from "qs";
 
 import { TProject } from "../../types";
 import { Project } from "./components";
+import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: { projectId: string };
+  params: { slug: string };
 }
 
 type TResponse = {
-  data: TProject;
+  data: Array<TProject>;
 };
 
-export default async function Page({ params: { projectId } }: PageProps) {
+export default async function Page({ params: { slug } }: PageProps) {
   const query = qs.stringify(
     {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
       populate: {
         coordinates: true,
         amenities: true,
@@ -31,12 +37,13 @@ export default async function Page({ params: { projectId } }: PageProps) {
     { encode: false }
   );
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects/${projectId}?&${query}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/projects/?&${query}`,
     {
       cache: "no-store",
     }
   );
 
-  const { data: project } = (await response.json()) as TResponse;
-  return <Project project={project} />;
+  const { data: projects } = (await response.json()) as TResponse;
+  if (projects.length !== 1) notFound();
+  return <Project project={projects[0]} />;
 }

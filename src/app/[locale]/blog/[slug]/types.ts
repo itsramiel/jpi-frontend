@@ -1,7 +1,7 @@
 import { TAuthor, TBlog } from "../types";
 
 export type TBlogResponse = {
-  data: {
+  data: Array<{
     id: number;
     attributes: TBlog & {
       author: {
@@ -11,5 +11,5 @@ export type TBlogResponse = {
         };
       };
     };
-  };
+  }>;
 };

@@ -84,7 +84,7 @@ export function ProjectsCarousel({
       ({ item, activeIndex, index }) => (
         <Link
           className="block h-full w-full relative cursor-pointer"
-          href={`/projects/${item.id}`}
+          href={`/projects/${item.attributes.slug}`}
         >
           <Image
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`}

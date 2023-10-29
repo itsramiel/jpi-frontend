@@ -18,7 +18,7 @@ export default async function Page({ params: { locale } }: BasePageProps) {
   const query = qs.stringify(
     {
       populate: "images",
-      fields: ["name", "city"],
+      fields: ["name", "city", "slug"],
       locale,
     },
     { encode: false }

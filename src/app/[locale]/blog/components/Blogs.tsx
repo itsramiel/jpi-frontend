@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { useRouter } from "@/hooks";
 import { formatDate } from "@/utils";
 
 import { TBlogsResponse } from "../types";
+import { Link } from "@/components";
 
 interface BlogsProps {
   blogs: TBlogsResponse;
@@ -14,16 +14,15 @@ interface BlogsProps {
 
 export function Blogs({ blogs }: BlogsProps) {
   const t = useTranslations("blogs.labels");
-  const router = useRouter();
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 px-3 gap-10">
       {blogs.map((blog) => {
         return (
-          <div
+          <Link
             key={blog.id}
             className="group flex flex-col gap-2 border-2 border-white p-3 rounded transition duration-300 hover:border-yellow-500 hover:-translate-y-2 cursor-pointer"
-            onClick={() => router.push(`/blog/${blog.id}`)}
+            href={`/blog/${blog.attributes.slug}`}
           >
             <div className="aspect-video overflow-hidden relative">
               <Image
@@ -51,7 +50,7 @@ export function Blogs({ blogs }: BlogsProps) {
                 )}
               </p>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>

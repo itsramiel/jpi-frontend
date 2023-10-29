@@ -7,7 +7,7 @@ import { Blogs, Header } from "./components";
 export default async function BlogPage({ params: { locale } }: BasePageProps) {
   const query = qs.stringify(
     {
-      fields: ["title", "publishedAt", "locale"],
+      fields: ["title", "publishedAt", "locale", "slug"],
       populate: ["author", "imageThumbnail"],
       locale,
     },

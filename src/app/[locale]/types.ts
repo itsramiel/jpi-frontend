@@ -6,6 +6,7 @@ export type TProject = {
   id: number;
   attributes: {
     name: string;
+    slug: string;
     city: string;
     description: string;
     locale: string;

@@ -7,6 +7,7 @@ export type TBlogsResponse = {
 }[];
 
 export type TBlog = {
+  slug: string;
   title: string;
   content: string;
   publishedAt: string;
