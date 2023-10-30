@@ -15,6 +15,10 @@
   --navbar-height: 3.5625rem;
 }
 
+img {
+  font-size: 0px;
+}
+
 @layer utilities {
   .mirror {
     transform: scaleX(var(--text-x-direction));
