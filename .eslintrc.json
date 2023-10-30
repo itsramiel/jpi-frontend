@@ -1,4 +1,8 @@
 {
   "plugins": ["i18next"],
-  "extends": ["next/core-web-vitals", "plugin:i18next/recommended"]
+  "extends": ["next/core-web-vitals", "plugin:i18next/recommended"],
+  "rules": {
+    "@next/next/no-img-element": "off",
+    "jsx-a11y/alt-text": "off"
+  }
 }

@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import { useLocale } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { EmblaCarouselType } from "embla-carousel-react";
 import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
-import { useLocale } from "next-intl";
+
+import { FilledImage } from "@/components";
 
 interface ImageCarouselProps {
   images: string[];
@@ -78,14 +79,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
         <div className="flex h-full">
           {images.map((image, index) => (
             <div key={index} className="flex-[0_0_100%] relative">
-              <Image
-                src={image}
-                alt="project image"
-                className="object-cover"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                quality={100}
-              />
+              <FilledImage loading="lazy" src={image} alt="project image" />
             </div>
           ))}
         </div>

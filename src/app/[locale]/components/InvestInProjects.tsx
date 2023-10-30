@@ -1,13 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import classNames from "classnames";
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import { useInView } from "react-intersection-observer";
 
-import { Button, Link } from "@/components";
+import { Button, Link, FilledImage } from "@/components";
 
 import { TProject } from "../types";
 import { Seperator } from "./Seperator";
@@ -59,7 +58,7 @@ export function InvestInProjects({ data }: InvestInProjectsProps) {
         </div>
         <ProjectsCarousel
           className={classNames(
-            "self-stretch transition-[transform,opacity] delay-1000 duration-1000",
+            "self-stretch md:self-auto transition-[transform,opacity] delay-1000 duration-1000",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
           data={data}
@@ -86,13 +85,9 @@ export function ProjectsCarousel({
           className="block h-full w-full relative cursor-pointer"
           href={`/projects/${item.attributes.slug}`}
         >
-          <Image
+          <FilledImage
             src={`${process.env.NEXT_PUBLIC_SERVER_URL}${item.attributes.images.data[0].attributes.url}`}
             alt={`${item.attributes.name}, ${item.attributes.city}`}
-            fill
-            sizes="50vw"
-            quality={100}
-            className="object-cover"
           />
           <div
             className={classNames(

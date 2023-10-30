@@ -1,7 +1,6 @@
 "use client";
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
 export function Partners() {
@@ -24,19 +23,19 @@ export function Partners() {
           inView ? "opacity-100 translate-y-0" : " opacity-0 translate-y-2"
         )}
       >
-        <Image
+        <img
+          loading="lazy"
           src={"/partners/dovec-logo-light.png"}
           alt={t("dovecAlt")}
           width={100}
           height={36}
-          className="w-[6.25rem] object-contain"
         />
-        <Image
+        <img
+          loading="lazy"
           src={"/partners/noyanlar-logo-light.png"}
           alt={t("noyanlarAlt")}
           width={100}
           height={23}
-          className="w-[6.25rem] object-contain"
         />
       </div>
     </div>

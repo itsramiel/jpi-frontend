@@ -1,11 +1,12 @@
 "use client";
-import Image from "next/image";
+import classNames from "classnames";
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 
+import { FilledImage } from "@/components";
+
 import { ReusableCarousel, TCarouselRenderItem } from "./ReusableCarousel";
 import { useInView } from "react-intersection-observer";
-import classNames from "classnames";
 import { Seperator } from "./Seperator";
 
 export function ExploreCountry() {
@@ -74,7 +75,7 @@ export function ExploreCountry() {
         </div>
         <DiscoverCarousel
           className={classNames(
-            "self-stretch transition-[transform,opacity] duration-1000 delay-[750ms]",
+            "self-stretch md:self-auto transition-[transform,opacity] duration-1000 delay-[750ms]",
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           )}
           images={images}
@@ -100,14 +101,7 @@ export function DiscoverCarousel({ images, className }: DiscoverCarouselProps) {
     DiscoverCarouselProps["images"][number]
   > = useCallback(
     ({ item: image }) => (
-      <Image
-        src={image.name}
-        fill
-        sizes="50vw"
-        alt={image.alt}
-        quality={100}
-        className="object-cover"
-      />
+      <FilledImage loading="lazy" src={image.name} alt={image.alt} />
     ),
     []
   );

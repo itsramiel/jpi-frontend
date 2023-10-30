@@ -1,13 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
-import { LanguageControl, NprogressController } from "./Navbar/components";
-import { IoClose, IoMenu } from "react-icons/io5";
 import classNames from "classnames";
-import { CSSProperties, useEffect, useState } from "react";
-import { Link } from "@/components";
 import nProgress from "nprogress-support-rtl";
+import { IoClose, IoMenu } from "react-icons/io5";
+import { useLocale, useTranslations } from "next-intl";
+import { CSSProperties, useEffect, useState } from "react";
+
+import { Link } from "@/components";
+
+import { LanguageControl, NprogressController } from "./Navbar/components";
 
 const LINKS = [
   { key: "projects", route: "/projects" },
@@ -53,13 +54,7 @@ export const Navbar = () => {
       <div className="h-full max-w-6xl mx-auto flex justify-between">
         <div className="flex flex-row gap-9 items-center">
           <Link href={"/"} className="cursor-pointer flex-shrink-0">
-            <Image
-              src={"/Logo.png"}
-              alt="logo"
-              width={31.18}
-              height={20}
-              className="w-[1.94875rem] h-[1.25rem]"
-            />
+            <img src={"/Logo.png"} alt="logo" width={31.18} height={20} />
           </Link>
           <div
             style={

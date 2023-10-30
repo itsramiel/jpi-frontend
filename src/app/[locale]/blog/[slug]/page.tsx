@@ -1,12 +1,12 @@
 import qs from "qs";
-import Image from "next/image";
 import Markdown from "markdown-to-jsx";
+import { notFound } from "next/navigation";
 
 import { formatDate } from "@/utils";
 import { BasePageProps } from "@/types";
+import { FilledImage } from "@/components";
 
 import { TBlogResponse } from "./types";
-import { notFound } from "next/navigation";
 
 interface PageProps {
   params: {
@@ -52,12 +52,10 @@ export default async function Page({
         </div>
       </div>
       <div className="aspect-video relative rounded overflow-hidden">
-        <Image
+        <FilledImage
+          loading="lazy"
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}${blog.imageThumbnail.data.attributes.url}`}
           alt="blog image"
-          className="object-cover"
-          fill
-          quality={100}
         />
       </div>
       <article className="prose">

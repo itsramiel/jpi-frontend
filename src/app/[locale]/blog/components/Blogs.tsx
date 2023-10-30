@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { formatDate } from "@/utils";
+import { FilledImage, Link } from "@/components";
 
 import { TBlogsResponse } from "../types";
-import { Link } from "@/components";
 
 interface BlogsProps {
   blogs: TBlogsResponse;
@@ -25,12 +24,10 @@ export function Blogs({ blogs }: BlogsProps) {
             href={`/blog/${blog.attributes.slug}`}
           >
             <div className="aspect-video overflow-hidden relative">
-              <Image
+              <FilledImage
                 src={`${process.env.NEXT_PUBLIC_SERVER_URL}${blog.attributes.imageThumbnail.data.attributes.url}`}
                 alt="blog thumbnail"
-                className="object-cover rounded transition-transform duration-300 group-hover:scale-105"
-                fill
-                quality={100}
+                className="rounded transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <p className="text-gray-950 text-xl font-semibold">
