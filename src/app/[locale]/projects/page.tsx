@@ -71,7 +71,7 @@ export default async function Page({
         propertyTypes={propertyTypes.data}
         bedroomCounts={bedroomCounts}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         <Projects projects={projects.data} />
       </div>
     </div>
