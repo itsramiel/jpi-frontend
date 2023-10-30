@@ -3,6 +3,7 @@ import qs from "qs";
 import { TProject } from "../../types";
 import { Project } from "./components";
 import { notFound } from "next/navigation";
+import { BasePageProps } from "@/types";
 
 interface PageProps {
   params: { slug: string };
@@ -12,7 +13,9 @@ type TResponse = {
   data: Array<TProject>;
 };
 
-export default async function Page({ params: { slug } }: PageProps) {
+export default async function Page({
+  params: { slug, locale },
+}: PageProps & BasePageProps) {
   const query = qs.stringify(
     {
       filters: {
@@ -32,7 +35,7 @@ export default async function Page({ params: { slug } }: PageProps) {
           },
         },
       },
-      locale: "en",
+      locale,
     },
     { encode: false }
   );
