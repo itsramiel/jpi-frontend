@@ -4,14 +4,17 @@ import {
   IoLogoLinkedin,
 } from "react-icons/io5";
 import classNames from "classnames";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+
 import { Link } from "@/components";
 
 interface FooterProps {
   className?: string;
 }
+
 export function Footer({ className }: FooterProps) {
   const t = useTranslations("labels");
+  const locale = useLocale();
   return (
     <footer
       className={classNames(
@@ -23,13 +26,30 @@ export function Footer({ className }: FooterProps) {
         <div className="flex flex-col justify-between">
           <p className="font-semibold">{t("companyName")}</p>
           <div className="flex flex-row flex-wrap gap-2">
-            <a href="#">
+            <a
+              target="_blank"
+              href={
+                locale === "en"
+                  ? "https://www.instagram.com/jokandapropertiesen"
+                  : "https://www.instagram.com/jokandapropertiesar"
+              }
+            >
               <IoLogoInstagram />
             </a>
-            <a href="#">
+            <a
+              target="_blank"
+              href={
+                locale === "en"
+                  ? "https://www.facebook.com/JokandaPropertyInvestment"
+                  : "https://www.facebook.com/profile.php?id=61551070901540"
+              }
+            >
               <IoLogoFacebook />
             </a>
-            <a href="#">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/jokanda-property-investment/"
+            >
               <IoLogoLinkedin />
             </a>
           </div>
