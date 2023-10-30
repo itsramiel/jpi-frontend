@@ -36,11 +36,13 @@ export default async function Page({ params: { locale } }: BasePageProps) {
   const { data } = (await response.json()) as TResponse;
 
   return (
-    <div className="px-4 py-9 md:py-24 xl:py-36 flex flex-col gap-9 md:gap-16 xl:gap-24">
-      <InvestInProjects data={data} />
-      <ExploreCountry />
-      <SellingPoints />
-      <Partners />
+    <div className="w-full max-w-6xl mx-auto px-4 pt-16">
+      <div className="w-full max-w-6xl mx-auto pt-16 px-4 my-9 md:my-24 xl:my-36 flex flex-col gap-9 md:gap-16 xl:gap-24">
+        <InvestInProjects data={data} />
+        <ExploreCountry />
+        <SellingPoints />
+        <Partners />
+      </div>
     </div>
   );
 }

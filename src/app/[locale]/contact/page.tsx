@@ -8,7 +8,7 @@ export default function Contact() {
   const t = useTranslations("conatct");
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 my-16">
+    <div className="w-full max-w-6xl mx-auto px-4 pt-[var(--navbar-height)] flex flex-col lg:flex-row gap-8 my-16">
       <main className="flex flex-1 flex-col gap-8">
         <div className="flex flex-col gap-2">
           <h1 className="text-gray-950 text-4xl font-bold">

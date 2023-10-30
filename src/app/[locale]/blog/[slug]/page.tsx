@@ -41,7 +41,7 @@ export default async function Page({
   const blog = data[0].attributes;
   const author = blog.author.data.attributes;
   return (
-    <div className="my-8 mx-auto max-w-2xl">
+    <div className="w-full px-4 pt-[var(--navbar-height)] my-8 mx-auto max-w-2xl">
       <div className="flex flex-col gap-2 pb-4">
         <p className="text-gray-950 text-3xl font-bold">{blog.title}</p>
         <div className="flex flex-row justify-between">

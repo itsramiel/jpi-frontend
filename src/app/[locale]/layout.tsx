@@ -43,9 +43,7 @@ export default async function RootLayout({
         >
           <body className="min-h-screen flex flex-col">
             <Navbar />
-            <div className="w-full max-w-6xl mx-auto px-4 pt-16">
-              {children}
-            </div>
+            {children}
             <Footer className="mt-auto" />
           </body>
         </html>

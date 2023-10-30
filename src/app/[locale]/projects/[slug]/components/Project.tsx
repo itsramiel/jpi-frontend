@@ -18,7 +18,7 @@ export const Project = ({ project }: ProjectProps) => {
   const tContact = useTranslations("conatct.form");
   const locale = useLocale();
   return (
-    <div className="my-8 mx-auto max-w-6xl flex flex-col gap-8">
+    <div className="w-full max-w-6xl mx-auto px-4 pt-[var(--navbar-height)] my-8  flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col">
           <p className="text-gray-950 text-4xl font-bold">

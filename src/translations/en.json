@@ -92,5 +92,10 @@
       "header": "Message received",
       "message": "We will get back to you as soon as possible"
     }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "We’re sorry, we could not find the page you are looking for",
+    "ctaButton": "Browse Projects"
   }
 }
