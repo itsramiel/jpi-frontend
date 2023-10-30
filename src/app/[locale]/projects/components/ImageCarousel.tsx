@@ -74,7 +74,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
     DOT_SIZE;
 
   return (
-    <div className="group aspect-[3/2] relative">
+    <div className="group aspect-[3/2] relative overflow-hidden">
       <div ref={emblaRef} className="overflow-hidden rounded h-full">
         <div className="flex h-full">
           {images.map((image, index) => (
