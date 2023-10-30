@@ -19,6 +19,10 @@ export default async function Page({ params: { locale } }: BasePageProps) {
     {
       populate: "images",
       fields: ["name", "city", "slug"],
+      pagination: {
+        start: 0,
+        limit: 5,
+      },
       locale,
     },
     { encode: false }
