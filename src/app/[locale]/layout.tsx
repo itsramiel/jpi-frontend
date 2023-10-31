@@ -1,22 +1,35 @@
 import "../globals.css";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getTranslator } from "next-intl/server";
 import { Noto_Naskh_Arabic } from "next/font/google";
 import { AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 
-import { LocaleSegmentProps } from "./types";
+import { BasePageProps } from "@/types";
 import { DirectionProvider, Footer, Navbar } from "./components";
+
+import { LocaleSegmentProps } from "./types";
 
 const rtlFont = Noto_Naskh_Arabic({
   subsets: ["arabic"],
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Home",
-  description: "Homepage of Jokanda Property Investment",
-  metadataBase: new URL("https://jokanda.com"),
-};
+export async function generateMetadata({
+  params,
+}: BasePageProps): Promise<Metadata> {
+  const t = await getTranslator(params.locale);
+
+  return {
+    title: t("labels.companyName"),
+    description: t("homepage.investDescription"),
+    metadataBase: new URL("https://jokanda.com"),
+    alternates: {
+      canonical: `/${params.locale}`,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

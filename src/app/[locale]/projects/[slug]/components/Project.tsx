@@ -15,7 +15,7 @@ interface ProjectProps {
 }
 export const Project = ({ project }: ProjectProps) => {
   const t = useTranslations("projects");
-  const tContact = useTranslations("conatct.form");
+  const tContact = useTranslations("contact.form");
   const locale = useLocale();
   return (
     <div className="w-full max-w-6xl mx-auto px-4 pt-[var(--navbar-height)] my-8  flex flex-col gap-8">

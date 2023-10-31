@@ -1,21 +1,42 @@
 import qs from "qs";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { BasePageProps } from "@/types";
 
 import { TProject } from "../../types";
 import { Project } from "./components";
-import { notFound } from "next/navigation";
-import { BasePageProps } from "@/types";
 
-interface PageProps {
-  params: { slug: string };
+export async function generateMetadata({
+  params: { locale, slug },
+}: PageProps): Promise<Metadata> {
+  const project = await getProject({ slug, locale });
+  return {
+    title: project.attributes.name,
+    description: project.attributes.description.substring(
+      0,
+      Math.min(100, project.attributes.description.length)
+    ),
+    alternates: {
+      canonical: `${locale}/projects/${slug}`,
+    },
+  };
 }
+
+type PageProps = {
+  params: { slug: string };
+} & BasePageProps;
 
 type TResponse = {
   data: Array<TProject>;
 };
 
-export default async function Page({
-  params: { slug, locale },
-}: PageProps & BasePageProps) {
+export default async function Page({ params: { slug, locale } }: PageProps) {
+  const project = await getProject({ slug, locale });
+  return <Project project={project} />;
+}
+
+async function getProject({ slug, locale }: { locale: string; slug: string }) {
   const query = qs.stringify(
     {
       filters: {
@@ -47,6 +68,6 @@ export default async function Page({
   );
 
   const { data: projects } = (await response.json()) as TResponse;
-  if (projects.length !== 1) notFound();
-  return <Project project={projects[0]} />;
+  if (projects.length < 1) notFound();
+  return projects[0];
 }

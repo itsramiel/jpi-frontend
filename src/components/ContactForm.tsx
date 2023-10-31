@@ -36,10 +36,10 @@ export const ContactForm = () => {
             name="contactInfo"
             control={control}
             rules={{
-              required: t("conatct.form.inputs.errors.required"),
+              required: t("contact.form.inputs.errors.required"),
               validate: (contactInfo) => {
                 if (!isEmail(contactInfo) && !isPhoneNumber(contactInfo)) {
-                  return t("conatct.form.inputs.errors.invalidContact");
+                  return t("contact.form.inputs.errors.invalidContact");
                 }
                 return true;
               },
@@ -47,7 +47,7 @@ export const ContactForm = () => {
             render={({ field, fieldState: { error } }) => (
               <Input
                 {...field}
-                fieldLabel={t("conatct.form.inputs.labels.contactInfo")}
+                fieldLabel={t("contact.form.inputs.labels.contactInfo")}
                 required
                 error={error?.message}
               />
@@ -57,12 +57,12 @@ export const ContactForm = () => {
             name="message"
             control={control}
             rules={{
-              required: t("conatct.form.inputs.errors.required"),
+              required: t("contact.form.inputs.errors.required"),
             }}
             render={({ field, fieldState: { error } }) => (
               <TextAreaInput
                 {...field}
-                fieldLabel={t("conatct.form.inputs.labels.message")}
+                fieldLabel={t("contact.form.inputs.labels.message")}
                 required
                 error={error?.message}
               />
@@ -74,7 +74,7 @@ export const ContactForm = () => {
             <AlertMessage>{t("labels.errorOccured")}</AlertMessage>
           ) : null}
           <Button className="self-start" loading={state === "loading"}>
-            {t("conatct.form.submitBtn")}
+            {t("contact.form.submitBtn")}
           </Button>
         </div>
       </form>
@@ -88,10 +88,10 @@ export const ContactForm = () => {
           </div>
           <div className="flex flex-col items-center">
             <p className="text-gray-950 text-xl md:text-2xl lg:3xl font-semibold">
-              {t("conatct.dialog.header")}
+              {t("contact.dialog.header")}
             </p>
             <p className="text-gray-700 text-sm md:text-base lg:text-lg font-medium">
-              {t("conatct.dialog.message")}
+              {t("contact.dialog.message")}
             </p>
           </div>
         </div>

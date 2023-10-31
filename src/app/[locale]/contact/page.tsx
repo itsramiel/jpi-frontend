@@ -1,10 +1,27 @@
+import { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslator } from "next-intl/server";
 import { IoCallSharp, IoMailSharp } from "react-icons/io5";
 
 import { ContactForm } from "@/components";
+import { BasePageProps } from "@/types";
+
+export async function generateMetadata({
+  params,
+}: BasePageProps): Promise<Metadata> {
+  const t = await getTranslator(params.locale, "contact.form");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: `/${params.locale}/contact`,
+    },
+  };
+}
 
 export default function Contact() {
-  const t = useTranslations("conatct");
+  const t = useTranslations("contact");
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 pt-[var(--navbar-height)] flex flex-col lg:flex-row gap-8 my-16">
