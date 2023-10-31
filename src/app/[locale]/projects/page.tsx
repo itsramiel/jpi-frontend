@@ -1,10 +1,13 @@
 import qs from "qs";
+import { Metadata } from "next";
+import { getTranslator } from "next-intl/server";
+
+import { Pagination } from "@/components";
 import { BasePageProps, TPaginationMeta } from "@/types";
 
 import { TProject, TPropertyType } from "../types";
-import { Header, Pagination, Projects, Search } from "./components";
-import { Metadata } from "next";
-import { getTranslator } from "next-intl/server";
+import { Header, Projects, Search } from "./components";
+import { getPageNumberFromSearchParams } from "@/utils";
 
 type TResponse = [
   {
@@ -40,8 +43,7 @@ export default async function Page({
   searchParams,
 }: PageProps) {
   const filters = createProjectsFilter(searchParams);
-  let page = Number(searchParams?.page);
-  if (isNaN(page) || page < 0) page = 1;
+  const page = getPageNumberFromSearchParams(searchParams);
 
   const query = qs.stringify(
     {
@@ -62,7 +64,7 @@ export default async function Page({
         },
       },
       pagination: {
-        pageSize: 6,
+        pageSize: 12,
         page,
       },
       locale,
@@ -98,7 +100,11 @@ export default async function Page({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         <Projects projects={projects.data} />
       </div>
-      <Pagination searchParams={searchParams ?? {}} info={projects.meta} />
+      <Pagination
+        searchParams={searchParams ?? {}}
+        info={projects.meta}
+        path="/projects"
+      />
     </div>
   );
 }

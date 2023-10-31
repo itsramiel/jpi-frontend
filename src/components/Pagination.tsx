@@ -2,17 +2,20 @@ import classNames from "classnames";
 import { useLocale } from "next-intl";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
-import { Link } from "@/components";
 import { formatNumber } from "@/utils";
 import { TPaginationMeta, TSearchParams } from "@/types";
+
+import { Link } from "./Link";
 
 interface PaginationProps {
   info: TPaginationMeta;
   searchParams: TSearchParams;
+  path: string;
 }
 export function Pagination({
   info: { pagination },
   searchParams,
+  path,
 }: PaginationProps) {
   const locale = useLocale();
   const pageNumbers = getPageNumbers(pagination);
@@ -24,7 +27,7 @@ export function Pagination({
   return (
     <div className="flex justify-center gap-3">
       <Link
-        href={pageHrefFromSearchParams(searchParams, pagination.page - 1)}
+        href={pageHrefFromSearchParams(searchParams, pagination.page - 1, path)}
         className={prevDisabled ? "pointer-events-none" : ""}
       >
         <IoArrowBack
@@ -36,7 +39,7 @@ export function Pagination({
       <div className="flex items-center gap-6">
         {pageNumbers.map((num) => (
           <Link
-            href={pageHrefFromSearchParams(searchParams, num)}
+            href={pageHrefFromSearchParams(searchParams, num, path)}
             className={classNames(
               "font-medium",
               num === pagination.page ? "text-yellow-600" : ""
@@ -48,7 +51,7 @@ export function Pagination({
         ))}
       </div>
       <Link
-        href={pageHrefFromSearchParams(searchParams, pagination.page + 1)}
+        href={pageHrefFromSearchParams(searchParams, pagination.page + 1, path)}
         className={nextDsiabled ? "pointer-events-none" : ""}
       >
         <IoArrowForward
@@ -74,10 +77,15 @@ function getPageNumbers({ page, pageCount }: TPaginationMeta["pagination"]) {
 
 function pageHrefFromSearchParams(
   searchParams: TSearchParams,
-  pageNumber: number
+  pageNumber: number,
+  path: string
 ) {
   const newSearchParams = new URLSearchParams(searchParams);
-  newSearchParams.set("page", String(pageNumber));
+  if (pageNumber === 1) {
+    newSearchParams.delete("page", String(pageNumber));
+  } else {
+    newSearchParams.set("page", String(pageNumber));
+  }
 
-  return `/projects?${newSearchParams}`;
+  return `${path}?${newSearchParams}`;
 }
