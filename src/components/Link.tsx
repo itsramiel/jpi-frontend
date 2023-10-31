@@ -2,10 +2,9 @@
 
 import NProgress from "nprogress-support-rtl";
 import { ComponentProps } from "react";
-import NextIntlLink from "next-intl/link";
 import { isCurrentHref } from "@/utils";
 import { useSearchParams } from "next/navigation";
-import { usePathname } from "next-intl/client";
+import { usePathname, Link as NextIntlLink } from "@/navigation";
 
 export function Link(
   props: ComponentProps<typeof NextIntlLink> & { href: string }

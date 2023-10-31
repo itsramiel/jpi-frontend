@@ -2,7 +2,8 @@ import { Ring } from "@uiball/loaders";
 import { IconType } from "react-icons";
 import { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { VariantProps, cva } from "class-variance-authority";
-import { Link } from ".";
+
+import { Link } from "./Link";
 
 const button = cva(
   "font-medium text-gray-50 rounded flex items-center justify-center gap-4",

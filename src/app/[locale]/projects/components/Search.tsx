@@ -1,13 +1,13 @@
 "use client";
 
 import { useDebounce } from "use-debounce";
-import { usePathname } from "next-intl/client";
 import { useSearchParams } from "next/navigation";
 import { IoSearchOutline } from "react-icons/io5";
 import React, { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { useRouter } from "@/hooks";
+import { usePathname } from "@/navigation";
 import { formatDecimalNumber } from "@/utils";
 
 import { TPropertyType } from "../../types";
@@ -88,10 +88,9 @@ export function Search({ bedroomCounts, propertyTypes }: SearchProps) {
       </div>
       <div className="flex gap-2">
         <Select
-          display={`${filters("noOfBedrooms")}: ${
-            form.bedroomCount &&
+          display={`${filters("noOfBedrooms")}: ${form.bedroomCount &&
             formatDecimalNumber(Number(form.bedroomCount), locale)
-          }`}
+            }`}
           placeholder={filters("noOfBedrooms")}
           onValueChange={onBedroomCountChange}
           value={form.bedroomCount}

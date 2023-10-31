@@ -1,7 +1,8 @@
-import { usePathname } from "next-intl/client";
 import { useSearchParams } from "next/navigation";
 import nProgress from "nprogress-support-rtl";
 import { startTransition, useEffect } from "react";
+
+import { usePathname } from "@/navigation";
 
 export function NprogressController() {
   const pathname = usePathname();

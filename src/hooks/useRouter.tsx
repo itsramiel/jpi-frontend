@@ -1,8 +1,9 @@
-import { isCurrentHref } from "@/utils";
-import { useRouter as useNextIntlRouter } from "next-intl/client";
-import { usePathname, useSearchParams } from "next/navigation";
-import nProgress from "nprogress-support-rtl";
 import { useMemo } from "react";
+import { isCurrentHref } from "@/utils";
+import nProgress from "nprogress-support-rtl";
+import { useSearchParams } from "next/navigation";
+import { useRouter as useNextIntlRouter, usePathname } from "@/navigation";
+
 export function useRouter(): ReturnType<typeof useNextIntlRouter> {
   const nextIntlRouter = useNextIntlRouter();
   const searchParams = useSearchParams();
