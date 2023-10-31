@@ -15,6 +15,7 @@ const rtlFont = Noto_Naskh_Arabic({
 export const metadata: Metadata = {
   title: "Home",
   description: "Homepage of Jokanda Property Investment",
+  metadataBase: new URL("https://jokanda.com"),
 };
 
 export default async function RootLayout({

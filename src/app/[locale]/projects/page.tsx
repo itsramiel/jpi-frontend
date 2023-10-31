@@ -3,6 +3,8 @@ import { BasePageProps, TPaginationMeta } from "@/types";
 
 import { TProject, TPropertyType } from "../types";
 import { Header, Pagination, Projects, Search } from "./components";
+import { Metadata } from "next";
+import { getTranslator } from "next-intl/server";
 
 type TResponse = [
   {
@@ -13,14 +15,25 @@ type TResponse = [
   Array<number>
 ];
 
-interface PageProps extends BasePageProps {
-  searchParams?: Partial<{
-    search: string;
-    bedroomCount: string;
-    propertyType: string;
-    page: string;
-  }>;
+export async function generateMetadata({
+  params,
+  searchParams,
+}: PageProps): Promise<Metadata> {
+  const t = await getTranslator(params.locale, "projects");
+  const searchParamsString = new URLSearchParams(searchParams).toString();
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: `/${params.locale}/projects${
+        searchParamsString.length > 0 ? "?" + searchParamsString : ""
+      }`,
+    },
+  };
 }
+
+interface PageProps extends BasePageProps {}
 
 export default async function Page({
   params: { locale },

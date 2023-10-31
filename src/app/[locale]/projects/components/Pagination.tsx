@@ -4,11 +4,11 @@ import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import { Link } from "@/components";
 import { formatNumber } from "@/utils";
-import { TPaginationMeta } from "@/types";
+import { TPaginationMeta, TSearchParams } from "@/types";
 
 interface PaginationProps {
   info: TPaginationMeta;
-  searchParams: Record<string, string>;
+  searchParams: TSearchParams;
 }
 export function Pagination({
   info: { pagination },
@@ -28,8 +28,9 @@ export function Pagination({
         className={prevDisabled ? "pointer-events-none" : ""}
       >
         <IoArrowBack
-          className={`w-6 h-6 mirror ${prevDisabled ? "text-gray-400" : "text-gray-600"
-            }`}
+          className={`w-6 h-6 mirror ${
+            prevDisabled ? "text-gray-400" : "text-gray-600"
+          }`}
         />
       </Link>
       <div className="flex items-center gap-6">
@@ -51,8 +52,9 @@ export function Pagination({
         className={nextDsiabled ? "pointer-events-none" : ""}
       >
         <IoArrowForward
-          className={`w-6 h-6 mirror ${nextDsiabled ? "text-gray-400" : "text-gray-600"
-            }`}
+          className={`w-6 h-6 mirror ${
+            nextDsiabled ? "text-gray-400" : "text-gray-600"
+          }`}
         />
       </Link>
     </div>
@@ -71,7 +73,7 @@ function getPageNumbers({ page, pageCount }: TPaginationMeta["pagination"]) {
 }
 
 function pageHrefFromSearchParams(
-  searchParams: Record<string, string>,
+  searchParams: TSearchParams,
   pageNumber: number
 ) {
   const newSearchParams = new URLSearchParams(searchParams);

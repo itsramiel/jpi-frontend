@@ -2,6 +2,7 @@ export interface BasePageProps {
   params: {
     locale: string;
   };
+  searchParams: TSearchParams;
 }
 
 export type TPaginationMeta = {
@@ -12,3 +13,5 @@ export type TPaginationMeta = {
     total: number;
   };
 };
+
+export type TSearchParams = { [key: string]: string };
