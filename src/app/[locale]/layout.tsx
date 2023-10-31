@@ -34,7 +34,11 @@ export default async function RootLayout({
   const dir = locale === "en" ? "ltr" : "rtl";
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider
+      locale={locale}
+      messages={messages}
+      timeZone="Asia/Famagusta"
+    >
       <DirectionProvider dir={dir}>
         <html
           lang={locale}

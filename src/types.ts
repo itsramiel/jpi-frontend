@@ -3,3 +3,12 @@ export interface BasePageProps {
     locale: string;
   };
 }
+
+export type TPaginationMeta = {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+};

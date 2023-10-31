@@ -1,23 +1,25 @@
 import qs from "qs";
-import { BasePageProps } from "@/types";
+import { BasePageProps, TPaginationMeta } from "@/types";
 
-import { Header, Projects, Search } from "./components";
 import { TProject, TPropertyType } from "../types";
+import { Header, Pagination, Projects, Search } from "./components";
 
 type TResponse = [
   {
     data: Array<TProject>;
+    meta: TPaginationMeta;
   },
   { data: Array<TPropertyType> },
   Array<number>
 ];
 
 interface PageProps extends BasePageProps {
-  searchParams?: {
-    search?: string;
-    bedroomCount?: string;
-    propertyType?: string;
-  };
+  searchParams?: Partial<{
+    search: string;
+    bedroomCount: string;
+    propertyType: string;
+    page: string;
+  }>;
 }
 
 export default async function Page({
@@ -25,26 +27,35 @@ export default async function Page({
   searchParams,
 }: PageProps) {
   const filters = createProjectsFilter(searchParams);
+  let page = Number(searchParams?.page);
+  if (isNaN(page) || page < 0) page = 1;
 
-  const query = qs.stringify({
-    ...(filters
-      ? {
-          filters: filters,
-        }
-      : undefined),
-    populate: {
-      coordinates: true,
-      amenities: true,
-      nearbyPOI: true,
-      images: true,
-      properties: {
-        populate: {
-          property_type: true,
+  const query = qs.stringify(
+    {
+      ...(filters
+        ? {
+            filters: filters,
+          }
+        : undefined),
+      populate: {
+        coordinates: true,
+        amenities: true,
+        nearbyPOI: true,
+        images: true,
+        properties: {
+          populate: {
+            property_type: true,
+          },
         },
       },
+      pagination: {
+        pageSize: 6,
+        page,
+      },
+      locale,
     },
-    locale,
-  });
+    { encode: false }
+  );
 
   const localeQuery = qs.stringify({
     locale,
@@ -74,6 +85,7 @@ export default async function Page({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         <Projects projects={projects.data} />
       </div>
+      <Pagination searchParams={searchParams ?? {}} info={projects.meta} />
     </div>
   );
 }
