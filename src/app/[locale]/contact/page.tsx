@@ -1,8 +1,7 @@
-"use client";
-
-import { ContactForm } from "@/components";
 import { useTranslations } from "next-intl";
 import { IoCallSharp, IoMailSharp } from "react-icons/io5";
+
+import { ContactForm } from "@/components";
 
 export default function Contact() {
   const t = useTranslations("conatct");
