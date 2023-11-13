@@ -82,7 +82,7 @@ function pageHrefFromSearchParams(
 ) {
   const newSearchParams = new URLSearchParams(searchParams);
   if (pageNumber === 1) {
-    newSearchParams.delete("page", String(pageNumber));
+    newSearchParams.delete("page");
   } else {
     newSearchParams.set("page", String(pageNumber));
   }
