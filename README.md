@@ -1,34 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## JPI (Jokanda Property Investement) Frontend
 
-## Getting Started
+I worked on JPI as a fullstack developer. 
 
-First, run the development server:
+In this project I:
+- built the frontend using [NextJS](https://nextjs.org/) and react server components with focus on SEO for search engine reaches
+- designed the UI from scratch using [Figma](https://www.figma.com/)(see screenshots below)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The website features:
+- Landing page with an overview of the company
+- Projects page with pagination of different offered properties
+- Blog page to allow for better reach and seo
+- Contact form which sends messages to the backend CMS
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Localization, LTR, and RTL support ✅
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Desktop Designs:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| **Feature** | **Desktop** | **Mobile** |
+| ---------- | --------- | --------- |
+| Home | ![Home-Desktop](https://github.com/user-attachments/assets/95736b59-b874-42ee-ba25-39098bdac2a8)| ![mobile-home](https://github.com/user-attachments/assets/6419d56f-ca4d-4ca5-98b4-a01b9372627e) |
+| Projects | ![projects-desktop](https://github.com/user-attachments/assets/2aa9a661-ca6e-42dd-b54e-3391aea6c495)| ![projects-mobile](https://github.com/user-attachments/assets/2d4a95e3-adb3-4d52-bc91-4f2212d63466) |
+| Blog | ![blog-desktop](https://github.com/user-attachments/assets/19660358-cfce-47c8-94d0-acd13113c2d1)| ![blog-mobile](https://github.com/user-attachments/assets/dfba2c84-522c-4a54-8c69-16fa9774faa8) |
+| Contact | ![contact-desktop](https://github.com/user-attachments/assets/db4efa0f-d58b-41af-91f8-db0ecc4cb7c0)| ![contact-mobile](https://github.com/user-attachments/assets/8605d3ee-cda4-40a3-8202-e03f30d9d38e) |
